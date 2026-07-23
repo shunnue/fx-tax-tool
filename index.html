@@ -191,6 +191,8 @@ tr.bulk-selected td { background: #e8f0fe !important; }
     </select>
     <button class="btn btn-clear" onclick="clearFilters()">クリア</button>
     <div style="margin-left:auto;display:flex;gap:8px;">
+      <button class="btn" onclick="document.getElementById('csvImportInput').click()" style="background:#5c6bc0;color:white" title="銀行・カードのCSVファイルを追加読み込みします">📂 CSVを追加</button>
+      <input type="file" id="csvImportInput" multiple accept=".csv" style="display:none" onchange="handleCSVImport(this.files)">
       <button class="btn" onclick="saveUnifiedData()" style="background:#2e7d32;color:white" title="全データとタグ・メモを taxdata_master.json に保存します">💾 統合データを保存</button>
       <button class="btn btn-primary" onclick="exportCSV()">📥 CSV出力</button>
     </div>
@@ -397,6 +399,78 @@ async function parseFile(fileHandle, path) {
     return { formatName: fmt.name, count: records.count, records };
   }
   return null;
+}
+
+async function parseFileFromObj(file) {
+  const buf = await file.arrayBuffer();
+  for (const fmt of FORMATS) {
+    const text = await decodeBuffer(buf, fmt.encoding);
+    if (!text) continue;
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+    if (lines.length < 2) continue;
+    const headers = parseCSVLine(lines[0]);
+    if (!fmt.detect(headers)) continue;
+    const records = [];
+    for (const line of lines.slice(1)) {
+      try {
+        const fields = parseCSVLine(line);
+        const rec = fmt.parse(fields, headers);
+        if (rec && rec.id && /^\d{8}$/.test(rec.date)) {
+          rec.sourceFile = file.name;
+          records.push(rec);
+        }
+      } catch { /* skip */ }
+    }
+    return { formatName: fmt.name, records };
+  }
+  return null;
+}
+
+async function handleCSVImport(files) {
+  if (!files || files.length === 0) return;
+  // input をリセット（同じファイルを再選択できるように）
+  document.getElementById('csvImportInput').value = '';
+
+  const existing = new Map(allRecords.map(r => [r.id, r]));
+  let totalAdded = 0, totalDup = 0, totalFiles = 0;
+
+  for (const file of files) {
+    const result = await parseFileFromObj(file);
+    if (!result) continue;
+    totalFiles++;
+    for (const rec of result.records) {
+      if (!existing.has(rec.id)) { existing.set(rec.id, rec); totalAdded++; }
+      else totalDup++;
+    }
+  }
+
+  if (totalFiles === 0) {
+    alert('対応フォーマットのCSVが見つかりませんでした。\n楽天銀行・楽天カード形式のCSVをお試しください。');
+    return;
+  }
+
+  allRecords = Array.from(existing.values()).sort((a, b) => a.date.localeCompare(b.date));
+
+  // 口座フィルター更新
+  const sel = document.getElementById('filterSource');
+  sel.innerHTML = '<option value="">すべての口座</option>';
+  [...new Set(allRecords.map(r => r.source))].forEach(s => {
+    const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o);
+  });
+  document.getElementById('headerSub').textContent = `${allRecords.length.toLocaleString()} 件（GitHub同期済み）`;
+  renderSourceBar();
+  applyFilters();
+
+  // GitHubへ自動保存
+  if (getGHToken()) {
+    const tags = getTags();
+    const records = allRecords.map(r => { const tag = tags[r.id] || {}; return { ...r, cat: tag.cat || '', memo: tag.memo || '' }; });
+    const json = JSON.stringify({ version: 1, tool: '税務データ検索ツール', exportedAt: new Date().toISOString(), count: records.length, records }, null, 2);
+    const ok = await ghPut('taxdata_master.json', json);
+    alert(`✅ インポート完了\n追加: ${totalAdded}件 ／ 重複スキップ: ${totalDup}件\n${ok ? 'GitHubへ自動保存しました' : '⚠️ GitHub保存に失敗しました（手動で「統合データを保存」を押してください）'}`);
+  } else {
+    alert(`✅ インポート完了\n追加: ${totalAdded}件 ／ 重複スキップ: ${totalDup}件\n「統合データを保存」でデータを保存してください。`);
+  }
 }
 
 // ─── アプリ状態 ─────────────────────────────────────────────────────────────
