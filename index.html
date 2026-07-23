@@ -114,6 +114,32 @@ tr.bulk-selected td { background: #e8f0fe !important; }
 .summary-chip .sc-name { color: #666; font-size: 10px; }
 .summary-chip .sc-amt { font-weight: 700; font-size: 13px; }
 .summary-chip .sc-cnt { color: #aaa; font-size: 10px; }
+
+/* 収入ルールモーダル */
+.modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.45); z-index:1000; display:none; align-items:center; justify-content:center; }
+.modal-overlay.open { display:flex; }
+.modal-box { background:white; border-radius:14px; padding:24px; width:580px; max-width:96vw; max-height:85vh; overflow-y:auto; box-shadow:0 8px 40px rgba(0,0,0,0.25); }
+.modal-box h2 { font-size:16px; font-weight:700; margin-bottom:16px; color:#1a73e8; }
+.rule-card { border:1px solid #e0e0e0; border-radius:8px; padding:12px 14px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+.rule-card:hover { background:#fafafa; }
+.rule-card .rc-title { font-weight:600; font-size:13px; }
+.rule-card .rc-sub { font-size:11px; color:#888; margin-top:2px; }
+.rule-card .rc-btns { display:flex; gap:6px; flex-shrink:0; }
+.rule-card .rc-btns button { padding:3px 10px; border-radius:5px; cursor:pointer; font-size:12px; font-family:inherit; }
+.edit-panel { background:#f8f9fa; border-radius:10px; padding:16px; margin-top:12px; }
+.edit-panel label { font-size:12px; color:#555; font-weight:600; display:block; margin-bottom:4px; margin-top:10px; }
+.edit-panel label:first-child { margin-top:0; }
+.edit-panel input[type=text], .edit-panel input[type=number], .edit-panel select { width:100%; padding:7px 10px; border:1px solid #ccc; border-radius:6px; font-size:13px; font-family:inherit; box-sizing:border-box; }
+.ded-row { display:flex; gap:6px; align-items:center; margin-bottom:6px; }
+.ded-row input[type=text]  { flex:1; padding:6px 8px; font-size:12px; font-family:inherit; border:1px solid #ccc; border-radius:5px; }
+.ded-row select            { padding:6px; font-size:12px; font-family:inherit; border:1px solid #ccc; border-radius:5px; }
+.ded-row input[type=number]{ width:80px; padding:6px 8px; font-size:12px; font-family:inherit; border:1px solid #ccc; border-radius:5px; }
+.ded-row .ded-unit         { font-size:12px; color:#888; width:22px; flex-shrink:0; }
+.ded-row .ded-del          { color:#e53935; border:none; background:none; cursor:pointer; font-size:18px; padding:0 2px; line-height:1; }
+.breakdown-box { background:#f1f8e9; border:1px solid #c8e6c9; border-radius:8px; padding:12px 14px; font-size:13px; }
+.bd-row { display:flex; justify-content:space-between; padding:3px 0; }
+.bd-row.bd-indent { padding-left:10px; color:#555; font-size:12px; }
+.bd-row.bd-total { font-weight:700; font-size:14px; color:#1b5e20; border-top:1px solid #c8e6c9; margin-top:6px; padding-top:8px; }
 </style>
 </head>
 <body>
@@ -123,6 +149,7 @@ tr.bulk-selected td { background: #e8f0fe !important; }
   <span class="sub" id="headerSub">フォルダを選択してください</span>
   <div class="header-actions">
     <button class="btn btn-refresh" id="refreshBtn" onclick="refreshFolder()" style="display:none">🔄 再読み込み</button>
+    <button class="btn" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.4)" onclick="openRuleModal()">⚙️ 収入ルール</button>
     <button class="btn btn-folder" onclick="openFolder()">📂 フォルダを選択</button>
   </div>
 </div>
@@ -263,6 +290,32 @@ tr.bulk-selected td { background: #e8f0fe !important; }
   </div>
 </div>
 
+<!-- 収入ルールモーダル -->
+<div id="incomeRuleModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2>⚙️ 収入ルール設定</h2>
+    <p style="font-size:12px;color:#888;margin-bottom:14px">入金の摘要名に含まれる文字を指定し、税金・手数料の控除ルールを登録すると、明細に総支給額を自動表示します。</p>
+    <div id="rulesList"></div>
+    <button onclick="startNewRule()" style="width:100%;padding:9px;border:2px dashed #1a73e8;background:white;color:#1a73e8;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;margin-top:4px">＋ ルールを追加</button>
+    <div id="ruleEditPanel" class="edit-panel" style="display:none">
+      <label>ルール名（表示用）</label>
+      <input type="text" id="editRuleName" placeholder="例: カラ－ズ給与">
+      <label style="margin-top:10px">摘要に含まれる文字列（部分一致）</label>
+      <input type="text" id="editRulePattern" placeholder="例: カラ－ズ">
+      <label style="margin-top:12px">控除項目</label>
+      <div id="deductionList"></div>
+      <button onclick="addDeduction()" style="padding:5px 14px;border:1px dashed #888;background:white;color:#555;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit;margin-top:4px">＋ 控除を追加</button>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button onclick="saveRule()" style="flex:1;padding:9px;background:#1a73e8;color:white;border:none;border-radius:7px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit">保存</button>
+        <button onclick="cancelRuleEdit()" style="padding:9px 18px;background:#e8eaed;color:#555;border:none;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit">キャンセル</button>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:16px">
+      <button onclick="closeRuleModal()" style="padding:8px 20px;background:#e8eaed;color:#555;border:none;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ─── フォーマット定義（銀行・カードの種類を追加する場合はここに追加）─────────
 
@@ -288,7 +341,7 @@ const FORMATS = [
       const approvalNo = (fields[8] || '').trim();
       // 照会番号（取引固有ID）を重複排除キーにする
       const id = inquiryNo ? `RB_${inquiryNo}` : `RB_${date}_${merchant}_${amount}`;
-      return { id, date, merchant, amount, localAmt, currency, rate, region, approvalNo, source: '楽天銀行' };
+      return { id, date, merchant, amount, localAmt, currency, rate, region, approvalNo, source: '楽天銀行（デビット）' };
     }
   },
   {
@@ -1026,6 +1079,8 @@ function selectRow(id) {
   if (!r) return;
   const tag = (getTags()[id] || {});
   const amzMatches = findAmazonOrders(r);
+  const incRule    = findMatchingRule(r);
+  const breakdown  = incRule ? calcBreakdown(r.amount, incRule) : null;
 
   document.getElementById('detailArea').innerHTML = `
     <div class="info-row"><span class="lbl">日付</span><span class="val">${fmtDate(r.date)}</span></div>
@@ -1048,6 +1103,27 @@ function selectRow(id) {
     <hr style="margin:8px 0;border-color:#eee">
     ${r.approvalNo ? `<div class="info-row"><span class="lbl">承認番号</span><span class="val">${esc(r.approvalNo)}</span></div>` : ''}
     <div class="meta-text" style="margin-top:4px">ファイル: ${esc(r.sourceFile||'')}</div>
+    ${breakdown ? `
+      <hr style="margin:10px 0;border-color:#c8e6c9">
+      <h3 style="color:#2e7d32;margin-bottom:8px">📊 収入内訳（${esc(incRule.name)}）</h3>
+      <div class="breakdown-box">
+        <div class="bd-row"><span>受取金額（手取り）</span><span>¥${breakdown.net.toLocaleString()}</span></div>
+        ${breakdown.items.map(item => `
+          <div class="bd-row bd-indent">
+            <span>${esc(item.name)}${item.type==='percent'?` (${item.rate}%)`:' (固定)'}</span>
+            <span style="color:#c62828">－¥${item.amount.toLocaleString()}</span>
+          </div>`).join('')}
+        <div class="bd-row bd-total">
+          <span>総支給額（控除前）</span>
+          <span>¥${breakdown.gross.toLocaleString()}</span>
+        </div>
+        <div style="color:#aaa;font-size:10px;margin-top:6px">※ 控除率から逆算した推定額（端数処理あり）</div>
+      </div>
+      <button onclick="openRuleModal()" style="width:100%;margin-top:8px;padding:6px;border:1px solid #aaa;background:white;color:#555;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit">⚙️ ルールを編集</button>
+    ` : r.direction === '入金' ? `
+      <hr style="margin:10px 0;border-color:#e0e0e0">
+      <button onclick="openRuleModal()" style="width:100%;padding:7px;border:1px dashed #1a73e8;background:white;color:#1a73e8;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit">＋ この入金に控除ルールを設定する</button>
+    ` : ''}
     ${amzMatches.length ? `
       <hr style="margin:8px 0;border-color:#f0c060">
       <h3 style="color:#e47911;margin-bottom:6px">🛒 Amazon注文照合（${amzMatches.length}件）</h3>
@@ -1254,6 +1330,115 @@ function exportCSV() {
   a.href     = URL.createObjectURL(blob);
   a.download = `税務データ_${new Date().toISOString().slice(0,10)}.csv`;
   a.click();
+}
+
+// ─── 収入ルール ────────────────────────────────────────────────────────────────
+
+function getIncomeRules() {
+  try { return JSON.parse(localStorage.getItem('incomeRules') || '[]'); } catch { return []; }
+}
+function saveIncomeRules(rules) { localStorage.setItem('incomeRules', JSON.stringify(rules)); }
+
+function findMatchingRule(record) {
+  if (record.direction !== '入金') return null;
+  return getIncomeRules().find(r => record.merchant.includes(r.pattern)) || null;
+}
+
+function calcBreakdown(netAmount, rule) {
+  const pcts   = rule.deductions.filter(d => d.type === 'percent');
+  const fixes  = rule.deductions.filter(d => d.type === 'fixed');
+  const totRate  = pcts.reduce((s, d) => s + Number(d.value), 0);
+  const totFixed = fixes.reduce((s, d) => s + Number(d.value), 0);
+  // net = gross*(1 - totRate/100) - totFixed  →  gross = (net+totFixed)/(1-totRate/100)
+  const gross = Math.round((netAmount + totFixed) / (1 - totRate / 100));
+  const items = rule.deductions.map(d => ({
+    name:   d.name,
+    type:   d.type,
+    rate:   Number(d.value),
+    amount: d.type === 'percent' ? Math.round(gross * Number(d.value) / 100) : Number(d.value)
+  }));
+  return { gross, net: netAmount, items };
+}
+
+// ── モーダル開閉 ──
+function openRuleModal()  { renderRuleList(); document.getElementById('incomeRuleModal').classList.add('open'); }
+function closeRuleModal() { document.getElementById('incomeRuleModal').classList.remove('open'); cancelRuleEdit(); }
+
+// ── ルール一覧 ──
+function renderRuleList() {
+  const rules = getIncomeRules();
+  const el = document.getElementById('rulesList');
+  if (rules.length === 0) {
+    el.innerHTML = '<p style="color:#bbb;text-align:center;padding:16px 0;font-size:13px">ルールがありません</p>';
+    return;
+  }
+  el.innerHTML = rules.map((rule, i) => `
+    <div class="rule-card">
+      <div>
+        <div class="rc-title">${esc(rule.name)}</div>
+        <div class="rc-sub">「${esc(rule.pattern)}」を含む入金 ／ 控除${rule.deductions.length}件</div>
+      </div>
+      <div class="rc-btns">
+        <button onclick="startEditRule(${i})" style="border:1px solid #1a73e8;color:#1a73e8;background:white">編集</button>
+        <button onclick="deleteRule(${i})"    style="border:1px solid #e53935;color:#e53935;background:white">削除</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── ルール編集 ──
+let _ruleEditIdx = null;
+let _editDeds = [];
+
+function startNewRule()    { _ruleEditIdx = null; openEditPanel({ name:'', pattern:'', deductions:[] }); }
+function startEditRule(i)  { _ruleEditIdx = i;    openEditPanel(getIncomeRules()[i]); }
+function cancelRuleEdit()  {
+  document.getElementById('ruleEditPanel').style.display = 'none';
+  _ruleEditIdx = null; _editDeds = [];
+}
+
+function openEditPanel(rule) {
+  document.getElementById('editRuleName').value    = rule.name;
+  document.getElementById('editRulePattern').value = rule.pattern;
+  _editDeds = rule.deductions.map(d => ({...d}));
+  renderDedList();
+  document.getElementById('ruleEditPanel').style.display = 'block';
+  document.getElementById('ruleEditPanel').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function renderDedList() {
+  document.getElementById('deductionList').innerHTML = _editDeds.map((d, i) => `
+    <div class="ded-row">
+      <input type="text"   value="${esc(d.name)}"  placeholder="名称（例: 所得税）"  oninput="_editDeds[${i}].name=this.value">
+      <select onchange="_editDeds[${i}].type=this.value;renderDedList()">
+        <option value="percent" ${d.type==='percent'?'selected':''}>%（総支給比）</option>
+        <option value="fixed"   ${d.type==='fixed'  ?'selected':''}>¥ 固定額</option>
+      </select>
+      <input type="number" value="${Number(d.value)}" min="0" step="${d.type==='percent'?'0.01':'1'}" oninput="_editDeds[${i}].value=this.value">
+      <span class="ded-unit">${d.type==='percent'?'%':'円'}</span>
+      <button class="ded-del" onclick="_editDeds.splice(${i},1);renderDedList()">×</button>
+    </div>`).join('');
+}
+
+function addDeduction() { _editDeds.push({ name:'', type:'percent', value:0 }); renderDedList(); }
+
+function saveRule() {
+  const name    = document.getElementById('editRuleName').value.trim();
+  const pattern = document.getElementById('editRulePattern').value.trim();
+  if (!name || !pattern) { alert('ルール名と文字列は必須です。'); return; }
+  const rule = { name, pattern, deductions: _editDeds.filter(d => d.name.trim()) };
+  const rules = getIncomeRules();
+  if (_ruleEditIdx === null) rules.push(rule); else rules[_ruleEditIdx] = rule;
+  saveIncomeRules(rules);
+  cancelRuleEdit();
+  renderRuleList();
+  if (selectedId) selectRow(selectedId);
+}
+
+function deleteRule(i) {
+  if (!confirm('このルールを削除しますか？')) return;
+  const rules = getIncomeRules(); rules.splice(i, 1); saveIncomeRules(rules);
+  renderRuleList();
+  if (selectedId) selectRow(selectedId);
 }
 
 // 起動時：GitHubトークンがあればクラウドから、なければローカルフォルダから
