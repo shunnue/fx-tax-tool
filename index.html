@@ -569,14 +569,14 @@ async function parseFileFromObj(file) {
 
 async function handleCSVImport(files) {
   if (!files || files.length === 0) return;
-  // input をリセット（同じファイルを再選択できるように）
+  const fileArray = Array.from(files);  // inputリセット前にコピー（リセットするとFileListが空になる）
   document.getElementById('csvImportInput').value = '';
 
   const existing = new Map(allRecords.map(r => [r.id, r]));
   let totalAdded = 0, totalDup = 0, totalFiles = 0;
 
   const failedFiles = [];
-  for (const file of files) {
+  for (const file of fileArray) {
     const result = await parseFileFromObj(file);
     if (!result.formatName) {
       failedFiles.push({ name: file.name, firstLine: result.firstLine || '（読み取り不可）' });
