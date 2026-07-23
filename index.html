@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>税務データ検索ツール</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; background: #f5f6fa; color: #333; font-size: 14px; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+.app-header { padding: 10px 20px; background: #1a73e8; color: white; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.app-header h1 { font-size: 16px; font-weight: 700; }
+.app-header .sub { font-size: 12px; opacity: 0.8; font-weight: normal; }
+.header-actions { margin-left: auto; display: flex; gap: 8px; }
+.btn { padding: 5px 14px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; height: 30px; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.btn-folder { background: white; color: #1a73e8; font-weight: 600; }
+.btn-refresh { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
+.btn-refresh:hover { background: rgba(255,255,255,0.3); }
+.btn-primary { background: #1a73e8; color: white; }
+.btn-clear { background: #e8eaed; color: #555; }
+.btn:hover { opacity: 0.88; }
+
+#welcome { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 40px; }
+#welcome h2 { font-size: 20px; color: #1a73e8; }
+#welcome p { color: #666; text-align: center; max-width: 480px; line-height: 1.6; }
+.welcome-btn { padding: 14px 32px; background: #1a73e8; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; }
+.welcome-btn:hover { background: #1557b0; }
+.format-list { background: white; border-radius: 10px; padding: 16px 20px; max-width: 440px; font-size: 13px; border: 1px solid #e0e0e0; }
+.format-list h4 { font-size: 13px; color: #555; margin-bottom: 8px; font-weight: 600; }
+.format-list li { margin: 4px 0 4px 16px; color: #444; line-height: 1.6; }
+.hint { font-size: 12px; color: #aaa; text-align: center; line-height: 1.8; }
+
+#sourceBar { background: #e8f0fe; border-bottom: 1px solid #c5d5f7; padding: 6px 20px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: #444; flex-shrink: 0; }
+.source-chip { background: white; border: 1px solid #c5d5f7; border-radius: 12px; padding: 2px 10px; color: #1a56c4; font-weight: 500; }
+.source-chip .cnt { opacity: 0.7; font-weight: normal; }
+
+.toolbar { padding: 8px 16px; background: white; border-bottom: 1px solid #e0e0e0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; flex-shrink: 0; }
+.toolbar input[type=text] { padding: 5px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; height: 30px; width: 180px; }
+.toolbar input[type=date] { padding: 5px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; height: 30px; width: 130px; }
+.toolbar select { padding: 5px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; height: 30px; }
+
+#statsBar { padding: 5px 20px; background: #f8f9fa; border-bottom: 1px solid #e0e0e0; display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; color: #555; flex-shrink: 0; }
+#statsBar strong { color: #c62828; }
+
+.main { flex: 1; display: flex; min-height: 0; }
+.table-area { flex: 1; overflow: auto; }
+.side-panel { width: 280px; background: white; border-left: 1px solid #e0e0e0; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+.side-panel h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead { position: sticky; top: 0; z-index: 10; }
+th { padding: 7px 10px; text-align: left; border-bottom: 2px solid #ddd; background: #f1f3f4; font-weight: 600; cursor: pointer; white-space: nowrap; user-select: none; font-size: 12px; }
+th:hover { background: #e8eaed; }
+.sort-icon { font-size: 9px; opacity: 0.5; margin-left: 3px; }
+td { padding: 6px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+tr:hover td { background: #f8f9ff; }
+tr.selected td { background: #e3f2fd !important; }
+
+.date-cell { white-space: nowrap; color: #666; font-size: 12px; }
+.merchant-cell { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.amount-cell { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
+.amount-large { color: #c62828; }
+.region-badge { font-size: 11px; padding: 1px 6px; border-radius: 10px; }
+.region-domestic { background: #e8f5e9; color: #2e7d32; }
+.region-overseas { background: #fff3e0; color: #e65100; }
+.source-badge { font-size: 10px; padding: 1px 6px; border-radius: 10px; background: #e3f2fd; color: #0d47a1; white-space: nowrap; }
+.cat-badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; white-space: nowrap; }
+.cat-none { color: #ccc; font-size: 11px; }
+.memo-cell { font-size: 11px; color: #888; max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.cat-食費 { background: #fce4ec; color: #880e4f; }
+.cat-コンビニ { background: #f3e5f5; color: #6a1b9a; }
+.cat-通信費 { background: #e3f2fd; color: #0d47a1; }
+.cat-交通費 { background: #e8f5e9; color: #1b5e20; }
+.cat-事業経費 { background: #fff8e1; color: #e65100; }
+.cat-サブスク { background: #e0f7fa; color: #006064; }
+.cat-医療費 { background: #fbe9e7; color: #bf360c; }
+.cat-娯楽 { background: #f9fbe7; color: #558b2f; }
+.cat-日用品 { background: #ede7f6; color: #4527a0; }
+.cat-その他 { background: #eceff1; color: #546e7a; }
+
+.info-row { display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; padding: 4px 0; gap: 8px; }
+.info-row .lbl { color: #888; white-space: nowrap; flex-shrink: 0; }
+.info-row .val { font-weight: 500; text-align: right; word-break: break-all; }
+select.cat-select { width: 100%; padding: 7px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; }
+textarea.memo-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; min-height: 70px; resize: vertical; font-family: inherit; }
+.btn-save { width: 100%; background: #1a73e8; color: white; padding: 8px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; margin-top: 2px; }
+.btn-save:hover { background: #1557b0; }
+.save-msg { text-align: center; font-size: 12px; color: #2e7d32; height: 16px; }
+.no-sel { color: #bbb; font-size: 13px; text-align: center; padding: 24px 0; }
+.meta-text { font-size: 11px; color: #bbb; word-break: break-all; }
+
+/* 一括操作バー */
+.bulk-bar { background: #1a73e8; color: white; padding: 8px 16px; display: none; flex-shrink: 0; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+.bulk-bar strong { font-size: 14px; }
+.bulk-bar select, .bulk-bar input[type=text] { padding: 4px 8px; border: none; border-radius: 5px; font-size: 13px; height: 28px; }
+.bulk-bar input[type=text] { width: 180px; color: #333; }
+.bulk-bar .bulk-apply { background: white; color: #1a73e8; font-weight: 700; padding: 4px 14px; border: none; border-radius: 5px; cursor: pointer; height: 28px; }
+.bulk-bar .bulk-cancel { background: rgba(255,255,255,0.2); color: white; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.4); border-radius: 5px; cursor: pointer; height: 28px; }
+.bulk-bar .bulk-cancel:hover, .bulk-bar .bulk-apply:hover { opacity: 0.85; }
+/* チェックボックス列 */
+th.col-check, td.col-check { width: 32px; padding: 6px 4px 6px 12px; }
+input[type=checkbox] { width: 15px; height: 15px; cursor: pointer; accent-color: #1a73e8; }
+tr.bulk-selected td { background: #e8f0fe !important; }
+
+.summary-bar { background: white; border-top: 1px solid #e0e0e0; padding: 8px 16px; flex-shrink: 0; }
+.summary-bar h4 { font-size: 11px; color: #888; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.summary-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.summary-chip { background: #f5f5f5; border-radius: 8px; padding: 5px 10px; font-size: 12px; display: flex; flex-direction: column; align-items: center; min-width: 80px; }
+.summary-chip .sc-name { color: #666; font-size: 10px; }
+.summary-chip .sc-amt { font-weight: 700; font-size: 13px; }
+.summary-chip .sc-cnt { color: #aaa; font-size: 10px; }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>📋 税務データ検索ツール</h1>
+  <span class="sub" id="headerSub">フォルダを選択してください</span>
+  <div class="header-actions">
+    <button class="btn btn-refresh" id="refreshBtn" onclick="refreshFolder()" style="display:none">🔄 再読み込み</button>
+    <button class="btn btn-folder" onclick="openFolder()">📂 フォルダを選択</button>
+  </div>
+</div>
+
+<div id="welcome">
+  <h2>📂 税務データのフォルダを選択してください</h2>
+  <p>CSVファイルが入ったフォルダを選ぶと、すべての明細を自動で読み込みます。<br>複数の口座・カードのCSVを同じフォルダに追加するだけで一括検索できます。</p>
+  <div id="ghSetupSection" style="display:none; flex-direction:column; align-items:center; gap:8px; width:100%; max-width:440px;">
+    <div style="background:white;border-radius:10px;padding:16px 20px;width:100%;border:2px solid #1a73e8;box-sizing:border-box;">
+      <h4 style="font-size:13px;color:#1a73e8;margin-bottom:10px">☁️ GitHubトークンを設定してクラウド同期を有効にする</h4>
+      <div style="display:flex;gap:8px;">
+        <input type="password" id="ghTokenInput" placeholder="github_pat_..." style="flex:1;padding:6px 10px;border:1px solid #ccc;border-radius:6px;font-size:13px;">
+        <button onclick="saveGHToken()" style="padding:6px 16px;background:#1a73e8;color:white;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">接続</button>
+      </div>
+    </div>
+    <span style="font-size:12px;color:#aaa">またはローカルフォルダから読み込む</span>
+  </div>
+  <div id="restoreSection" style="display:none; flex-direction:column; align-items:center; gap:8px;">
+    <button class="welcome-btn" id="restoreBtn" onclick="restoreFolder()" style="background:#2e7d32">
+      📂 前回のフォルダを開く：<span id="restoreName"></span>
+    </button>
+    <span style="font-size:12px;color:#aaa">または</span>
+  </div>
+  <button class="welcome-btn" onclick="openFolder()">別のフォルダを選択する</button>
+  <div class="format-list">
+    <h4>📄 対応フォーマット（自動判別）</h4>
+    <ul>
+      <li>楽天銀行 デビットカード明細（Shift-JIS CSV）</li>
+      <li>楽天カード 利用明細（Shift-JIS CSV）</li>
+      <li>一般的な日付・金額・店舗名CSV（UTF-8）</li>
+    </ul>
+  </div>
+  <p class="hint">
+    サブフォルダも再帰的に読み込みます<br>
+    同じ取引が複数ファイルに含まれていても自動で重複除外します<br>
+    カテゴリ・メモはブラウザに保存され、次回も引き継がれます
+  </p>
+</div>
+
+<div id="appMain" style="display:none; flex-direction:column; flex:1; min-height:0;">
+  <div id="sourceBar"></div>
+
+  <div class="toolbar">
+    <input type="text" id="searchText" placeholder="🔍 店舗名・メモで検索..." oninput="applyFilters()">
+    <input type="text" id="searchApproval" placeholder="承認番号（例: A0067653）" oninput="applyFilters()" style="width:160px">
+    <input type="date" id="dateFrom" onchange="applyFilters()" title="開始日">
+    <span style="color:#bbb">〜</span>
+    <input type="date" id="dateTo" onchange="applyFilters()" title="終了日">
+    <select id="filterCat" onchange="applyFilters()">
+      <option value="">すべてのカテゴリ</option>
+      <option value="_none">未分類のみ</option>
+      <option value="食費">食費</option>
+      <option value="コンビニ">コンビニ</option>
+      <option value="通信費">通信費</option>
+      <option value="交通費">交通費</option>
+      <option value="事業経費">事業経費</option>
+      <option value="サブスク">サブスク</option>
+      <option value="医療費">医療費</option>
+      <option value="娯楽">娯楽</option>
+      <option value="日用品">日用品</option>
+      <option value="その他">その他</option>
+    </select>
+    <select id="filterSource" onchange="applyFilters()">
+      <option value="">すべての口座</option>
+    </select>
+    <select id="filterRegion" onchange="applyFilters()">
+      <option value="">国内・海外</option>
+      <option value="国内">国内のみ</option>
+      <option value="海外">海外のみ</option>
+    </select>
+    <button class="btn btn-clear" onclick="clearFilters()">クリア</button>
+    <div style="margin-left:auto;display:flex;gap:8px;">
+      <button class="btn" onclick="saveUnifiedData()" style="background:#2e7d32;color:white" title="全データとタグ・メモを taxdata_master.json に保存します">💾 統合データを保存</button>
+      <button class="btn btn-primary" onclick="exportCSV()">📥 CSV出力</button>
+    </div>
+  </div>
+
+  <div class="bulk-bar" id="bulkBar">
+    <strong id="bulkCount"></strong>
+    <span style="opacity:.7">カテゴリ:</span>
+    <select id="bulkCat">
+      <option value="">-- 変更しない --</option>
+      <option value="食費">食費</option>
+      <option value="コンビニ">コンビニ</option>
+      <option value="通信費">通信費</option>
+      <option value="交通費">交通費</option>
+      <option value="事業経費">事業経費</option>
+      <option value="サブスク">サブスク</option>
+      <option value="医療費">医療費</option>
+      <option value="娯楽">娯楽</option>
+      <option value="日用品">日用品</option>
+      <option value="その他">その他</option>
+      <option value="_clear">（カテゴリを削除）</option>
+    </select>
+    <span style="opacity:.7">メモ:</span>
+    <input type="text" id="bulkMemo" placeholder="空欄=変更しない">
+    <button class="bulk-apply" onclick="applyBulkCategory()">✓ 一括適用</button>
+    <button class="bulk-cancel" onclick="clearSelection()">✕ 選択解除</button>
+  </div>
+
+  <div id="statsBar">
+    <span>表示: <strong id="filteredCount">0</strong> 件</span>
+    <span>合計: <strong id="filteredTotal">0</strong> 円</span>
+    <span id="totalStat"></span>
+    <span id="untaggedStat"></span>
+  </div>
+
+  <div class="main">
+    <div class="table-area">
+      <table id="mainTable">
+        <thead>
+          <tr>
+            <th class="col-check"><input type="checkbox" id="selectAll" onclick="toggleSelectAll(this.checked)"></th>
+            <th onclick="sortBy('date')" data-col="date">日付 <span class="sort-icon">▲</span></th>
+            <th onclick="sortBy('merchant')" data-col="merchant">店舗名 <span class="sort-icon"></span></th>
+            <th onclick="sortBy('amount')" data-col="amount">金額 <span class="sort-icon"></span></th>
+            <th>地域</th>
+            <th>口座</th>
+            <th>カテゴリ</th>
+            <th>メモ</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="side-panel">
+      <h3>明細詳細・メモ</h3>
+      <div id="detailArea"><p class="no-sel">明細をクリックして選択</p></div>
+    </div>
+  </div>
+
+  <div class="summary-bar">
+    <h4>カテゴリ別集計（絞り込み結果）</h4>
+    <div class="summary-chips" id="summaryChips"></div>
+  </div>
+</div>
+
+<script>
+// ─── フォーマット定義（銀行・カードの種類を追加する場合はここに追加）─────────
+
+const FORMATS = [
+  {
+    id: 'rakuten_bank_debit',
+    name: '楽天銀行',
+    encoding: 'shift-jis',
+    detect(headers) {
+      return headers.some(h => h.includes('ご利用日')) &&
+             headers.some(h => h.includes('ご利用先')) &&
+             headers.some(h => h.includes('照会番号'));
+    },
+    parse(fields) {
+      const date       = (fields[0] || '').trim();
+      const merchant   = (fields[1] || '').trim();
+      const amount     = parseInt(((fields[2] || '0').trim()).replace(/[^0-9]/g, '')) || 0;
+      const localAmt   = (fields[3] || '').trim();
+      const currency   = (fields[4] || '').trim();
+      const rate       = (fields[5] || '').trim();
+      const region     = (fields[6] || '').trim();
+      const inquiryNo  = (fields[7] || '').trim();
+      const approvalNo = (fields[8] || '').trim();
+      // 照会番号（取引固有ID）を重複排除キーにする
+      const id = inquiryNo ? `RB_${inquiryNo}` : `RB_${date}_${merchant}_${amount}`;
+      return { id, date, merchant, amount, localAmt, currency, rate, region, approvalNo, source: '楽天銀行' };
+    }
+  },
+  {
+    id: 'rakuten_card',
+    name: '楽天カード',
+    encoding: 'shift-jis',
+    detect(headers) {
+      return headers.some(h => h.includes('利用日')) &&
+             headers.some(h => h.includes('利用店名') || h.includes('利用店'));
+    },
+    parse(fields) {
+      // 楽天カード形式: 利用日,利用店名・商品名,利用者,支払方法,利用金額,支払金額,...
+      const date     = ((fields[0] || '').trim()).replace(/\//g,'').replace(/-/g,'');
+      const merchant = (fields[1] || '').trim();
+      const amount   = parseInt(((fields[4] || fields[2] || '0').trim()).replace(/[^0-9]/g,'')) || 0;
+      const id       = `RC_${date}_${merchant}_${amount}`;
+      return { id, date, merchant, amount, localAmt:'', currency:'', rate:'', region:'国内', source:'楽天カード' };
+    }
+  },
+  {
+    // SBI証券・銀行など 汎用的な日本語CSV
+    id: 'jp_generic',
+    name: '汎用（国内）',
+    encoding: 'shift-jis',
+    detect(headers) {
+      const h = headers.join('');
+      return (h.includes('日付') || h.includes('取引日') || h.includes('計上日')) &&
+             (h.includes('金額') || h.includes('出金') || h.includes('支払'));
+    },
+    parse(fields, headers) {
+      const h = headers;
+      const dateIdx  = h.findIndex(s => s.includes('日付') || s.includes('取引日') || s.includes('計上日'));
+      const nameIdx  = h.findIndex(s => s.includes('摘要') || s.includes('内容') || s.includes('店名') || s.includes('名称'));
+      const amtIdx   = h.findIndex(s => s.includes('出金') || s.includes('支払') || s.includes('金額'));
+      const date     = ((fields[dateIdx >= 0 ? dateIdx : 0] || '').trim()).replace(/[\/-]/g,'');
+      const merchant = (fields[nameIdx >= 0 ? nameIdx : 1] || '').trim();
+      const amount   = parseInt(((fields[amtIdx >= 0 ? amtIdx : 2] || '0').trim()).replace(/[^0-9]/g,'')) || 0;
+      const id       = `JP_${date}_${merchant}_${amount}`;
+      return { id, date, merchant, amount, localAmt:'', currency:'', rate:'', region:'国内', source:'汎用CSV(国内)' };
+    }
+  },
+  {
+    id: 'utf8_generic',
+    name: '汎用（UTF-8）',
+    encoding: 'utf-8',
+    detect(headers) {
+      const h = headers.map(s => s.toLowerCase()).join('');
+      return (h.includes('date') || h.includes('日付')) && (h.includes('amount') || h.includes('金額'));
+    },
+    parse(fields, headers) {
+      const h = headers.map(s => s.toLowerCase());
+      const dateIdx  = h.findIndex(s => s.includes('date') || s.includes('日付'));
+      const nameIdx  = h.findIndex(s => s.includes('name') || s.includes('description') || s.includes('merchant') || s.includes('店') || s.includes('摘要'));
+      const amtIdx   = h.findIndex(s => s.includes('amount') || s.includes('金額'));
+      const date     = ((fields[dateIdx >= 0 ? dateIdx : 0] || '').trim()).replace(/[\/-]/g,'');
+      const merchant = (fields[nameIdx >= 0 ? nameIdx : 1] || '').trim();
+      const amount   = parseInt(((fields[amtIdx >= 0 ? amtIdx : 2] || '0').trim()).replace(/[^0-9-]/g,'')) || 0;
+      const id       = `UTF_${date}_${merchant}_${amount}`;
+      return { id, date, merchant, amount, localAmt:'', currency:'', rate:'', region:'', source:'汎用CSV(UTF-8)' };
+    }
+  }
+];
+
+// ─── CSVパーサ ─────────────────────────────────────────────────────────────
+
+function parseCSVLine(line) {
+  const fields = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+      else inQ = !inQ;
+    } else if (c === ',' && !inQ) {
+      fields.push(cur); cur = '';
+    } else cur += c;
+  }
+  fields.push(cur);
+  return fields;
+}
+
+async function decodeBuffer(buf, enc) {
+  try { return new TextDecoder(enc, { fatal: true }).decode(buf); } catch { return null; }
+}
+
+async function parseFile(fileHandle, path) {
+  const file = await fileHandle.getFile();
+  const buf  = await file.arrayBuffer();
+
+  for (const fmt of FORMATS) {
+    const text = await decodeBuffer(buf, fmt.encoding);
+    if (!text) continue;
+
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+    if (lines.length < 2) continue;
+
+    const headers = parseCSVLine(lines[0]);
+    if (!fmt.detect(headers)) continue;
+
+    const records = [];
+    for (const line of lines.slice(1)) {
+      try {
+        const fields = parseCSVLine(line);
+        const rec = fmt.parse(fields, headers);
+        // date が8桁の数字であることを最低限確認
+        if (rec && rec.id && /^\d{8}$/.test(rec.date)) {
+          rec.sourceFile = path;
+          records.push(rec);
+        }
+      } catch { /* malformed line skip */ }
+    }
+    return { formatName: fmt.name, count: records.count, records };
+  }
+  return null;
+}
+
+// ─── アプリ状態 ─────────────────────────────────────────────────────────────
+
+let allRecords  = [];
+let filtered    = [];
+let sortCol     = 'date', sortDir = 1;
+let selectedId  = null;
+let selectedIds = new Set();
+let dirHandle   = null;
+let loadedFiles = [];
+let amazonOrders = [];
+
+// ─── GitHub 連携 ─────────────────────────────────────────────────────────────
+
+const GH_REPO   = 'shunnue/fx-tax-tool';
+const GH_BRANCH = 'main';
+
+function getGHToken() { return localStorage.getItem('gh_token') || ''; }
+function setGHToken(t) { localStorage.setItem('gh_token', t.trim()); }
+
+async function ghRaw(filename) {
+  try {
+    const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/data/${filename}?t=${Date.now()}`);
+    return r.ok ? r.json() : null;
+  } catch { return null; }
+}
+
+async function ghPut(filename, jsonStr) {
+  const token = getGHToken();
+  if (!token) return false;
+  const url = `https://api.github.com/repos/${GH_REPO}/contents/data/${filename}`;
+  const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+  let sha;
+  try { const r = await fetch(url, { headers }); if (r.ok) sha = (await r.json()).sha; } catch {}
+  const body = { message: `Update ${filename}`, content: btoa(unescape(encodeURIComponent(jsonStr))), ...(sha ? { sha } : {}) };
+  const r = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  return r.ok;
+}
+
+async function loadFromGitHub() {
+  document.getElementById('headerSub').textContent = 'GitHubから読み込み中...';
+  document.getElementById('welcome').style.display = 'none';
+
+  const dedup = new Map();
+
+  const master = await ghRaw('taxdata_master.json');
+  if (master && master.version === 1 && Array.isArray(master.records) && master.records.length > 0) {
+    for (const rec of master.records) dedup.set(rec.id, rec);
+    const tags = getTags();
+    let changed = false;
+    for (const rec of master.records) {
+      if ((rec.cat || rec.memo) && !tags[rec.id]) {
+        tags[rec.id] = { cat: rec.cat || '', memo: rec.memo || '' };
+        changed = true;
+      }
+    }
+    if (changed) localStorage.setItem('taxTags_v2', JSON.stringify(tags));
+  }
+
+  amazonOrders = [];
+  const amz = await ghRaw('amazon_orders_2026.json');
+  if (amz && Array.isArray(amz.orders)) amazonOrders = amz.orders;
+
+  if (dedup.size > 0) {
+    allRecords = Array.from(dedup.values()).sort((a, b) => a.date.localeCompare(b.date));
+    loadedFiles = [{ path: 'GitHub', format: 'クラウドデータ', total: allRecords.length, added: allRecords.length, dup: 0 }];
+    const sel = document.getElementById('filterSource');
+    sel.innerHTML = '<option value="">すべての口座</option>';
+    [...new Set(allRecords.map(r => r.source))].forEach(s => {
+      const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o);
+    });
+    document.getElementById('headerSub').textContent = `${allRecords.length.toLocaleString()} 件（GitHub同期済み）`;
+    document.getElementById('refreshBtn').style.display = '';
+    renderSourceBar();
+    showApp();
+    applyFilters();
+  } else {
+    document.getElementById('headerSub').textContent = 'GitHubにデータなし（フォルダを選択して読み込んでください）';
+    showApp();
+  }
+}
+
+async function saveGHToken() {
+  const t = document.getElementById('ghTokenInput').value.trim();
+  if (!t) return;
+  setGHToken(t);
+  document.getElementById('ghSetupSection').style.display = 'none';
+  await loadFromGitHub();
+}
+
+// ─── IndexedDB：フォルダハンドルの永続化 ──────────────────────────────────
+
+const IDB_NAME = 'taxTool', IDB_STORE = 'handles', IDB_KEY = 'lastFolder';
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(IDB_NAME, 1);
+    req.onupgradeneeded = e => e.target.result.createObjectStore(IDB_STORE);
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+async function saveHandle(handle) {
+  try {
+    const db = await openDB();
+    await new Promise((resolve, reject) => {
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).put(handle, IDB_KEY);
+      tx.oncomplete = resolve;
+      tx.onerror    = e => reject(e.target.error);
+    });
+  } catch { /* 保存失敗は無視 */ }
+}
+
+async function getSavedHandle() {
+  try {
+    const db = await openDB();
+    return await new Promise((resolve, reject) => {
+      const tx  = db.transaction(IDB_STORE, 'readonly');
+      const req = tx.objectStore(IDB_STORE).get(IDB_KEY);
+      req.onsuccess = e => resolve(e.target.result);
+      req.onerror   = e => reject(e.target.error);
+    });
+  } catch { return null; }
+}
+
+// ページ起動時：前回のフォルダを確認して復元ボタンを出す
+async function tryRestoreFolder() {
+  const handle = await getSavedHandle();
+  if (!handle) return;
+
+  // ブラウザが既にアクセス許可を持っているか確認（ユーザー操作不要）
+  const perm = await handle.queryPermission({ mode: 'readwrite' });
+  if (perm === 'granted') {
+    dirHandle = handle;
+    await loadFromHandle();
+  } else {
+    // 許可が必要（ユーザーのクリック起点が要る）→ 復元ボタンを表示
+    document.getElementById('restoreName').textContent = handle.name;
+    document.getElementById('restoreSection').style.display = 'flex';
+    // ボタンに handle を紐付けておく
+    document.getElementById('restoreBtn')._handle = handle;
+  }
+}
+
+async function restoreFolder() {
+  const handle = document.getElementById('restoreBtn')._handle;
+  if (!handle) return;
+  try {
+    const perm = await handle.requestPermission({ mode: 'readwrite' });
+    if (perm === 'granted') {
+      dirHandle = handle;
+      await loadFromHandle();
+    }
+  } catch (e) {
+    alert('フォルダへのアクセスに失敗しました: ' + e.message);
+  }
+}
+
+// ─── フォルダ読み込み ──────────────────────────────────────────────────────
+
+async function openFolder() {
+  try {
+    dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    await loadFromHandle();
+  } catch (e) {
+    if (e.name !== 'AbortError') alert('読み込みエラー: ' + e.message);
+  }
+}
+
+async function refreshFolder() {
+  if (getGHToken()) {
+    await loadFromGitHub();
+  } else if (dirHandle) {
+    try {
+      await dirHandle.requestPermission({ mode: 'readwrite' });
+      await loadFromHandle();
+    } catch (e) {
+      alert('再読み込みエラー: ' + e.message);
+    }
+  }
+}
+
+async function loadFromHandle() {
+  document.getElementById('headerSub').textContent = '読み込み中...';
+
+  const dedup = new Map();  // id → record（重複排除）
+  const files = [];
+
+  // Step 1: taxdata_master.json があれば先にベースとして読む
+  try {
+    const jsonHandle = await dirHandle.getFileHandle('taxdata_master.json');
+    const master = await loadMasterJSON(jsonHandle);
+    if (master) {
+      // レコードを dedup に登録
+      for (const rec of master.records) dedup.set(rec.id, rec);
+      // 埋め込みタグ・メモを localStorage にマージ（localStorage 側が既に入力済みなら優先しない）
+      const tags = getTags();
+      let changed = false;
+      for (const rec of master.records) {
+        if ((rec.cat || rec.memo) && !tags[rec.id]) {
+          tags[rec.id] = { cat: rec.cat || '', memo: rec.memo || '' };
+          changed = true;
+        }
+      }
+      if (changed) localStorage.setItem('taxTags_v2', JSON.stringify(tags));
+      const exportedAt = master.exportedAt ? new Date(master.exportedAt).toLocaleString('ja-JP') : '不明';
+      files.push({ path: 'taxdata_master.json', format: `統合データ（保存日: ${exportedAt}）`, total: master.records.length, added: master.records.length, dup: 0 });
+    }
+  } catch { /* master JSON なし → CSVのみ読む */ }
+
+  // Step 2: CSV を読み込み（master に無い新規レコードのみ追加）
+  await scanDir(dirHandle, '', dedup, files);
+
+  // Step 3: Amazonデータ読み込み
+  amazonOrders = [];
+  try {
+    for await (const entry of dirHandle.values()) {
+      if (entry.kind === 'file' && /^amazon_orders.*\.json$/i.test(entry.name)) {
+        const file = await entry.getFile();
+        const data = JSON.parse(await file.text());
+        if (Array.isArray(data.orders)) amazonOrders.push(...data.orders);
+      }
+    }
+  } catch { /* Amazonデータなし */ }
+
+  if (dedup.size === 0) {
+    alert('データが見つかりませんでした。\ntaxdata_master.json または対応CSVをフォルダに置いてください。');
+    document.getElementById('headerSub').textContent = 'データなし';
+    return;
+  }
+
+  allRecords  = Array.from(dedup.values()).sort((a, b) => a.date.localeCompare(b.date));
+  loadedFiles = files;
+
+  // 口座フィルターを更新
+  const sel = document.getElementById('filterSource');
+  sel.innerHTML = '<option value="">すべての口座</option>';
+  [...new Set(allRecords.map(r => r.source))].forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+
+  document.getElementById('headerSub').textContent =
+    `${allRecords.length.toLocaleString()} 件 ｜ ${dirHandle.name}`;
+  document.getElementById('refreshBtn').style.display = '';
+  await saveHandle(dirHandle);
+
+  renderSourceBar();
+  showApp();
+  applyFilters();
+}
+
+async function scanDir(dh, basePath, dedup, files) {
+  for await (const entry of dh.values()) {
+    const entryPath = basePath ? `${basePath}/${entry.name}` : entry.name;
+    if (entry.kind === 'file' && entry.name.toLowerCase().endsWith('.csv')) {
+      const result = await parseFile(entry, entryPath);
+      if (result) {
+        let added = 0;
+        for (const rec of result.records) {
+          if (!dedup.has(rec.id)) { dedup.set(rec.id, rec); added++; }
+        }
+        const dup = result.records.length - added;
+        files.push({ path: entryPath, format: result.formatName, total: result.records.length, added, dup });
+      }
+    } else if (entry.kind === 'directory' && !entry.name.startsWith('.')) {
+      const subDh = await dh.getDirectoryHandle(entry.name);
+      await scanDir(subDh, entryPath, dedup, files);
+    }
+  }
+}
+
+function showApp() {
+  document.getElementById('welcome').style.display = 'none';
+  const app = document.getElementById('appMain');
+  app.style.display = 'flex';
+}
+
+function renderSourceBar() {
+  const totals = {};
+  for (const r of allRecords) totals[r.source] = (totals[r.source] || 0) + 1;
+
+  const dupTotal = loadedFiles.reduce((s, f) => s + (f.dup || 0), 0);
+
+  document.getElementById('sourceBar').innerHTML =
+    '<span style="color:#888;font-size:11px">読み込み済み:</span>' +
+    Object.entries(totals).map(([src, cnt]) =>
+      `<span class="source-chip">${esc(src)} <span class="cnt">${cnt}件</span></span>`
+    ).join('') +
+    `<span style="color:#888;margin-left:auto;font-size:11px">
+       ${loadedFiles.length}ファイル ｜ 重複除外 ${dupTotal}件 ｜ 合計 ${allRecords.length}件
+     </span>`;
+}
+
+// ─── Amazon照合 ─────────────────────────────────────────────────────────────
+
+function isAmazonMerchant(merchant) {
+  // 全角英字を半角に変換してから比較
+  const m = (merchant || '').replace(/[Ａ-Ｚａ-ｚ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)).toLowerCase();
+  return m.includes('amazon') || m.includes('amzn') || m.includes('アマゾン');
+}
+
+function parseDate8(d) {
+  return new Date(d.slice(0,4), d.slice(4,6) - 1, d.slice(6,8));
+}
+
+function findAmazonOrders(record) {
+  if (!isAmazonMerchant(record.merchant) || amazonOrders.length === 0) return [];
+  const DAY = 86400000;
+  const recTime = parseDate8(record.date).getTime();
+
+  // 注文日は引き落とし日以前であるべき（最大14日前〜当日+1日の誤差まで許容）
+  const inRange = o => {
+    const oTime = parseDate8(o.date).getTime();
+    return oTime <= recTime + 1 * DAY && oTime >= recTime - 14 * DAY;
+  };
+
+  // 1. 金額完全一致（単独）
+  const exact = amazonOrders.filter(o => o.amount === record.amount && inRange(o));
+  if (exact.length > 0) return exact.map(o => ({ ...o, _matchType: 'exact', _group: null }));
+
+  // 2. ±7日以内の他のAmazon引き落とし（自分含む）を集めて合計照合
+  const nearby = allRecords.filter(r2 =>
+    isAmazonMerchant(r2.merchant) &&
+    Math.abs(parseDate8(r2.date).getTime() - recTime) <= 7 * DAY
+  );
+
+  const results = [];
+  const seen = new Set();
+
+  // 2件の組み合わせ
+  for (let i = 0; i < nearby.length; i++) {
+    for (let j = i + 1; j < nearby.length; j++) {
+      const grp = [nearby[i], nearby[j]];
+      if (!grp.some(r => r.id === record.id)) continue;
+      const total = grp.reduce((s, r) => s + r.amount, 0);
+      const maxTime = Math.max(...grp.map(r => parseDate8(r.date).getTime()));
+      amazonOrders.forEach(o => {
+        const oTime = parseDate8(o.date).getTime();
+        if (o.amount === total && oTime <= maxTime + 1 * DAY && oTime >= maxTime - 14 * DAY && !seen.has(o.orderId)) {
+          seen.add(o.orderId);
+          results.push({ ...o, _matchType: 'combined', _group: grp.map(r => ({ date: r.date, amount: r.amount })) });
+        }
+      });
+    }
+  }
+
+  // 3件の組み合わせ
+  for (let i = 0; i < nearby.length; i++) {
+    for (let j = i + 1; j < nearby.length; j++) {
+      for (let k = j + 1; k < nearby.length; k++) {
+        const grp = [nearby[i], nearby[j], nearby[k]];
+        if (!grp.some(r => r.id === record.id)) continue;
+        const total = grp.reduce((s, r) => s + r.amount, 0);
+        const maxTime = Math.max(...grp.map(r => parseDate8(r.date).getTime()));
+        amazonOrders.forEach(o => {
+          const oTime = parseDate8(o.date).getTime();
+          if (o.amount === total && oTime <= maxTime + 1 * DAY && oTime >= maxTime - 14 * DAY && !seen.has(o.orderId)) {
+            seen.add(o.orderId);
+            results.push({ ...o, _matchType: 'combined', _group: grp.map(r => ({ date: r.date, amount: r.amount })) });
+          }
+        });
+      }
+    }
+  }
+
+  return results.slice(0, 3);
+}
+
+// ─── フィルタリング・表示 ─────────────────────────────────────────────────
+
+const CATEGORIES = ['食費','コンビニ','通信費','交通費','事業経費','サブスク','医療費','娯楽','日用品','その他'];
+
+function applyFilters() {
+  const text         = document.getElementById('searchText').value.toLowerCase();
+  const approvalRaw  = document.getElementById('searchApproval').value.replace(/[^0-9]/g, '');
+  const dateFrom  = document.getElementById('dateFrom').value.replace(/-/g,'');
+  const dateTo    = document.getElementById('dateTo').value.replace(/-/g,'');
+  const catF      = document.getElementById('filterCat').value;
+  const srcF      = document.getElementById('filterSource').value;
+  const regionF   = document.getElementById('filterRegion').value;
+  const tags      = getTags();
+
+  filtered = allRecords.filter(r => {
+    const tag = tags[r.id] || {};
+    if (text && !r.merchant.toLowerCase().includes(text) && !(tag.memo||'').toLowerCase().includes(text) && !(r.approvalNo||'').includes(text)) return false;
+    if (approvalRaw) {
+      const normalize = s => s.replace(/[^0-9]/g, '').replace(/^0+/, '') || '0';
+      if (normalize(approvalRaw) !== normalize(r.approvalNo||'')) return false;
+    }
+    if (dateFrom && r.date < dateFrom) return false;
+    if (dateTo   && r.date > dateTo)   return false;
+    if (srcF    && r.source  !== srcF)    return false;
+    if (regionF && r.region  !== regionF) return false;
+    if (catF === '_none')  { if (tag.cat)          return false; }
+    else if (catF)         { if (tag.cat !== catF)  return false; }
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    const av = sortCol === 'amount' ? a.amount : (a[sortCol] || '');
+    const bv = sortCol === 'amount' ? b.amount : (b[sortCol] || '');
+    return av < bv ? -sortDir : av > bv ? sortDir : 0;
+  });
+
+  renderTable();
+  renderStats();
+  renderSummary();
+}
+
+function fmtDate(d) {
+  return d && d.length === 8 ? `${d.slice(0,4)}-${d.slice(4,6)}-${d.slice(6,8)}` : (d||'');
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderTable() {
+  const tags  = getTags();
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  for (const r of filtered) {
+    const tag     = tags[r.id] || {};
+    const cat     = tag.cat || '';
+    const checked = selectedIds.has(r.id);
+    const tr      = document.createElement('tr');
+    if (r.id === selectedId) tr.classList.add('selected');
+    if (checked) tr.classList.add('bulk-selected');
+    tr.onclick = () => selectRow(r.id);
+    tr.innerHTML =
+      `<td class="col-check" onclick="event.stopPropagation()">` +
+        `<input type="checkbox" class="row-check" ${checked ? 'checked' : ''} onchange="toggleSelect('${r.id.replace(/'/g,"\\'")}', this.checked)">` +
+      `</td>` +
+      `<td class="date-cell">${fmtDate(r.date)}</td>` +
+      `<td class="merchant-cell" title="${esc(r.merchant)}">${isAmazonMerchant(r.merchant) && findAmazonOrders(r).length > 0 ? '<span style="color:#e47911;font-size:11px">🛒</span> ' : ''}${esc(r.merchant)}</td>` +
+      `<td class="amount-cell${r.amount>=10000?' amount-large':''}">¥${r.amount.toLocaleString()}</td>` +
+      `<td>${r.region ? `<span class="region-badge ${r.region==='海外'?'region-overseas':'region-domestic'}">${esc(r.region)}</span>` : ''}</td>` +
+      `<td><span class="source-badge">${esc(r.source)}</span></td>` +
+      `<td>${cat ? `<span class="cat-badge cat-${esc(cat)}">${esc(cat)}</span>` : '<span class="cat-none">未分類</span>'}</td>` +
+      `<td class="memo-cell" title="${esc(tag.memo||'')}">${esc(tag.memo||'')}</td>`;
+    tbody.appendChild(tr);
+  }
+  // 全選択チェックボックスの状態を同期
+  const sa = document.getElementById('selectAll');
+  if (sa) {
+    const allChecked  = filtered.length > 0 && filtered.every(r => selectedIds.has(r.id));
+    const someChecked = filtered.some(r => selectedIds.has(r.id));
+    sa.checked       = allChecked;
+    sa.indeterminate = !allChecked && someChecked;
+  }
+}
+
+function renderStats() {
+  const tags  = getTags();
+  const total = filtered.reduce((s, r) => s + r.amount, 0);
+  document.getElementById('filteredCount').textContent = filtered.length.toLocaleString();
+  document.getElementById('filteredTotal').textContent = total.toLocaleString();
+  document.getElementById('totalStat').textContent     = `全体: ${allRecords.length.toLocaleString()}件`;
+  const untagged = allRecords.filter(r => !(tags[r.id]||{}).cat).length;
+  document.getElementById('untaggedStat').textContent  = `未分類: ${untagged.toLocaleString()}件`;
+}
+
+function renderSummary() {
+  const tags   = getTags();
+  const catMap = {};
+  for (const r of filtered) {
+    const cat = (tags[r.id]||{}).cat || '(未分類)';
+    if (!catMap[cat]) catMap[cat] = { count: 0, total: 0 };
+    catMap[cat].count++;
+    catMap[cat].total += r.amount;
+  }
+  document.getElementById('summaryChips').innerHTML =
+    Object.entries(catMap)
+      .sort((a, b) => b[1].total - a[1].total)
+      .map(([cat, d]) =>
+        `<div class="summary-chip">
+          <span class="sc-name">${esc(cat)}</span>
+          <span class="sc-amt">¥${d.total.toLocaleString()}</span>
+          <span class="sc-cnt">${d.count}件</span>
+        </div>`
+      ).join('');
+}
+
+// ─── 詳細パネル ────────────────────────────────────────────────────────────
+
+function selectRow(id) {
+  selectedId = id;
+  const rows = document.querySelectorAll('#tableBody tr');
+  const idx  = filtered.findIndex(r => r.id === id);
+  rows.forEach((tr, i) => tr.classList.toggle('selected', i === idx));
+
+  const r   = allRecords.find(r => r.id === id);
+  if (!r) return;
+  const tag = (getTags()[id] || {});
+  const amzMatches = findAmazonOrders(r);
+
+  document.getElementById('detailArea').innerHTML = `
+    <div class="info-row"><span class="lbl">日付</span><span class="val">${fmtDate(r.date)}</span></div>
+    <div class="info-row"><span class="lbl">店舗名</span><span class="val">${esc(r.merchant)}</span></div>
+    <div class="info-row"><span class="lbl">金額</span><span class="val" style="color:#c62828;font-size:15px">¥${r.amount.toLocaleString()}</span></div>
+    <div class="info-row"><span class="lbl">地域</span><span class="val">${esc(r.region||'-')}</span></div>
+    <div class="info-row"><span class="lbl">口座</span><span class="val">${esc(r.source)}</span></div>
+    ${r.localAmt ? `<div class="info-row"><span class="lbl">現地通貨</span><span class="val">${esc(r.localAmt)} ${esc(r.currency)} (レート: ${esc(r.rate)})</span></div>` : ''}
+    <hr style="margin:8px 0;border-color:#eee">
+    <h3>カテゴリ</h3>
+    <select class="cat-select" id="catSelect" onchange="saveCurrent()">
+      <option value="">-- 未分類 --</option>
+      ${CATEGORIES.map(c => `<option value="${c}"${tag.cat===c?' selected':''}>${c}</option>`).join('')}
+    </select>
+    <h3 style="margin-top:10px">メモ</h3>
+    <textarea class="memo-input" id="memoInput" placeholder="何の支出か、経費の理由など...">${esc(tag.memo||'')}</textarea>
+    <button class="btn-save" onclick="saveCurrent()">💾 保存</button>
+    <div class="save-msg" id="saveMsg"></div>
+    <hr style="margin:8px 0;border-color:#eee">
+    ${r.approvalNo ? `<div class="info-row"><span class="lbl">承認番号</span><span class="val">${esc(r.approvalNo)}</span></div>` : ''}
+    <div class="meta-text" style="margin-top:4px">ファイル: ${esc(r.sourceFile||'')}</div>
+    ${amzMatches.length ? `
+      <hr style="margin:8px 0;border-color:#f0c060">
+      <h3 style="color:#e47911;margin-bottom:6px">🛒 Amazon注文照合（${amzMatches.length}件）</h3>
+      ${amzMatches.map(o => `
+        <div style="font-size:12px;margin:5px 0;padding:8px;background:${o._matchType==='exact'?'#fff8ee':'#fffdf0'};border-radius:6px;border:1px solid ${o._matchType==='exact'?'#f0c060':'#e8d87a'};">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="color:#888;font-size:11px">注文日: ${fmtDate(o.date)} / ¥${o.amount.toLocaleString()}</span>
+            ${o._matchType==='exact'
+              ? '<span style="color:#2e7d32;font-size:10px;font-weight:600">● 金額一致</span>'
+              : `<span style="color:#2e7d32;font-size:10px;font-weight:600">● 分割合計一致</span>`}
+          </div>
+          ${o._matchType==='combined' && o._group ? `
+            <div style="color:#c07000;font-size:11px;margin-bottom:4px;background:#fff3e0;padding:3px 6px;border-radius:4px;">
+              ${o._group.map(g => `${fmtDate(g.date)} ¥${g.amount.toLocaleString()}`).join(' + ')} = ¥${o.amount.toLocaleString()}
+            </div>
+          ` : ''}
+          <div style="color:#888;font-size:10px;margin-bottom:4px">注文番号: ${esc(o.orderId)}</div>
+          ${o.items.slice(0,3).map(item => `<div style="color:#333;margin-top:2px">・${esc(item)}</div>`).join('')}
+          ${o.items.length > 3 ? `<div style="color:#aaa;font-size:11px;margin-top:2px">他 ${o.items.length - 3} 点</div>` : ''}
+        </div>
+      `).join('')}
+    ` : ''}
+  `;
+}
+
+function saveCurrent() {
+  if (!selectedId) return;
+  const cat  = document.getElementById('catSelect').value;
+  const memo = document.getElementById('memoInput').value.trim();
+  saveTag(selectedId, cat, memo);
+  const msg = document.getElementById('saveMsg');
+  if (msg) { msg.textContent = '✓ 保存しました'; setTimeout(() => { try { msg.textContent=''; } catch {} }, 2000); }
+  renderTable();
+  renderStats();
+  renderSummary();
+}
+
+// ─── ソート ────────────────────────────────────────────────────────────────
+
+function sortBy(col) {
+  if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = 1; }
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    const icon = th.querySelector('.sort-icon');
+    if (icon) icon.textContent = th.dataset.col === col ? (sortDir===1?'▲':'▼') : '';
+  });
+  renderTable();
+}
+
+// ─── localStorage ──────────────────────────────────────────────────────────
+
+function getTags() {
+  try { return JSON.parse(localStorage.getItem('taxTags_v2') || '{}'); } catch { return {}; }
+}
+function saveTag(id, cat, memo) {
+  const tags = getTags();
+  if (!cat && !memo) delete tags[id]; else tags[id] = { cat, memo };
+  localStorage.setItem('taxTags_v2', JSON.stringify(tags));
+}
+
+// ─── 一括操作 ──────────────────────────────────────────────────────────────
+
+function toggleSelect(id, checked) {
+  if (checked) selectedIds.add(id); else selectedIds.delete(id);
+  updateBulkBar();
+  // 全選択チェックの indeterminate 状態を更新
+  const sa = document.getElementById('selectAll');
+  if (sa) {
+    const allChecked  = filtered.length > 0 && filtered.every(r => selectedIds.has(r.id));
+    const someChecked = filtered.some(r => selectedIds.has(r.id));
+    sa.checked = allChecked; sa.indeterminate = !allChecked && someChecked;
+  }
+  // 行の強調を同期
+  document.querySelectorAll('#tableBody tr').forEach(tr => {
+    const cb = tr.querySelector('.row-check');
+    if (cb) tr.classList.toggle('bulk-selected', cb.checked);
+  });
+}
+
+function toggleSelectAll(checked) {
+  filtered.forEach(r => { if (checked) selectedIds.add(r.id); else selectedIds.delete(r.id); });
+  document.querySelectorAll('.row-check').forEach(cb => { cb.checked = checked; });
+  document.querySelectorAll('#tableBody tr').forEach(tr => tr.classList.toggle('bulk-selected', checked));
+  updateBulkBar();
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  if (selectedIds.size === 0) {
+    bar.style.display = 'none';
+  } else {
+    bar.style.display = 'flex';
+    document.getElementById('bulkCount').textContent = `${selectedIds.size.toLocaleString()}件選択中`;
+  }
+}
+
+function applyBulkCategory() {
+  const cat  = document.getElementById('bulkCat').value;
+  const memo = document.getElementById('bulkMemo').value.trim();
+  if (!cat && !memo) { alert('カテゴリかメモを入力してください。'); return; }
+
+  const tags = getTags();
+  for (const id of selectedIds) {
+    const existing = tags[id] || {};
+    tags[id] = {
+      cat:  cat === '_clear' ? '' : (cat  || existing.cat  || ''),
+      memo: memo ? memo : (existing.memo || ''),
+    };
+    if (!tags[id].cat && !tags[id].memo) delete tags[id];
+  }
+  localStorage.setItem('taxTags_v2', JSON.stringify(tags));
+
+  clearSelection();
+  renderTable();
+  renderStats();
+  renderSummary();
+}
+
+function clearSelection() {
+  selectedIds.clear();
+  document.querySelectorAll('.row-check').forEach(cb => cb.checked = false);
+  const sa = document.getElementById('selectAll');
+  if (sa) { sa.checked = false; sa.indeterminate = false; }
+  document.getElementById('bulkCat').value  = '';
+  document.getElementById('bulkMemo').value = '';
+  updateBulkBar();
+  renderTable();
+}
+
+// ─── ユーティリティ ────────────────────────────────────────────────────────
+
+function clearFilters() {
+  ['searchText','searchApproval'].forEach(id => document.getElementById(id).value = '');
+  ['dateFrom','dateTo'].forEach(id => document.getElementById(id).value = '');
+  ['filterCat','filterSource','filterRegion'].forEach(id => document.getElementById(id).value = '');
+  clearSelection();
+  applyFilters();
+}
+
+// ─── 統合データ（JSON）の保存・読み込み ────────────────────────────────────
+
+async function loadMasterJSON(fileHandle) {
+  try {
+    const file = await fileHandle.getFile();
+    const data = JSON.parse(await file.text());
+    if (data.version === 1 && Array.isArray(data.records)) return data;
+  } catch { /* 不正なJSONは無視 */ }
+  return null;
+}
+
+async function saveUnifiedData() {
+  if (allRecords.length === 0) { alert('読み込まれたデータがありません。'); return; }
+
+  const tags = getTags();
+  const records = allRecords.map(r => {
+    const tag = tags[r.id] || {};
+    // cat・memo を各レコードに埋め込む（空でも含める）
+    return { ...r, cat: tag.cat || '', memo: tag.memo || '' };
+  });
+
+  const data = {
+    version: 1,
+    tool: '税務データ検索ツール',
+    exportedAt: new Date().toISOString(),
+    count: records.length,
+    records,
+  };
+  const json = JSON.stringify(data, null, 2);
+
+  if (getGHToken()) {
+    const ok = await ghPut('taxdata_master.json', json);
+    if (ok) {
+      alert(`✅ GitHubに保存しました\n${records.length.toLocaleString()}件`);
+    } else {
+      alert('❌ GitHub保存に失敗しました。\nトークンを確認してください。');
+    }
+  } else {
+    try {
+      const fileHandle = await dirHandle.getFileHandle('taxdata_master.json', { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(json);
+      await writable.close();
+      alert(`✅ 保存しました\n\ntaxdata_master.json（${records.length.toLocaleString()}件）\nフォルダ: ${dirHandle.name}`);
+    } catch {
+      const blob = new Blob([json], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'taxdata_master.json';
+      a.click();
+      alert('taxdata_master.json をダウンロードしました。\n税務データフォルダに配置してください。');
+    }
+  }
+}
+
+function exportCSV() {
+  const tags = getTags();
+  const rows = [['日付','店舗名','金額(円)','地域','現地通貨額','通貨','換算レート','口座','カテゴリ','メモ','ファイル']];
+  for (const r of filtered) {
+    const tag = tags[r.id] || {};
+    rows.push([fmtDate(r.date), r.merchant, r.amount, r.region||'', r.localAmt||'', r.currency||'', r.rate||'', r.source, tag.cat||'', tag.memo||'', r.sourceFile||'']);
+  }
+  const csv  = rows.map(row => row.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['﻿'+csv], { type: 'text/csv;charset=utf-8' });
+  const a    = document.createElement('a');
+  a.href     = URL.createObjectURL(blob);
+  a.download = `税務データ_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+// 起動時：GitHubトークンがあればクラウドから、なければローカルフォルダから
+(async () => {
+  if (getGHToken()) {
+    await loadFromGitHub();
+  } else {
+    document.getElementById('ghSetupSection').style.display = 'flex';
+    await tryRestoreFolder();
+  }
+})();
+</script>
+</body>
+</html>
