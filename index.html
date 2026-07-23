@@ -304,7 +304,10 @@ tr.bulk-selected td { background: #e8f0fe !important; }
       <input type="text" id="editRulePattern" placeholder="例: カラ－ズ">
       <label style="margin-top:12px">控除項目</label>
       <div id="deductionList"></div>
-      <button onclick="addDeduction()" style="padding:5px 14px;border:1px dashed #888;background:white;color:#555;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit;margin-top:4px">＋ 控除を追加</button>
+      <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+        <button onclick="addWithholding()" style="padding:5px 12px;border:1px solid #1a73e8;background:#e8f0fe;color:#1a73e8;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600">＋ 源泉徴収</button>
+        <button onclick="addDeduction()"   style="padding:5px 12px;border:1px dashed #888;background:white;color:#555;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit">＋ その他の控除</button>
+      </div>
       <div style="display:flex;gap:8px;margin-top:14px">
         <button onclick="saveRule()" style="flex:1;padding:9px;background:#1a73e8;color:white;border:none;border-radius:7px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit">保存</button>
         <button onclick="cancelRuleEdit()" style="padding:9px 18px;background:#e8eaed;color:#555;border:none;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit">キャンセル</button>
@@ -1110,7 +1113,7 @@ function selectRow(id) {
         <div class="bd-row"><span>受取金額（手取り）</span><span>¥${breakdown.net.toLocaleString()}</span></div>
         ${breakdown.items.map(item => `
           <div class="bd-row bd-indent">
-            <span>${esc(item.name)}${item.type==='percent'?` (${item.rate}%)`:' (固定)'}</span>
+            <span>${esc(item.name)} <span style="color:#aaa;font-size:11px">(${esc(item.label)})</span></span>
             <span style="color:#c62828">－¥${item.amount.toLocaleString()}</span>
           </div>`).join('')}
         <div class="bd-row bd-total">
@@ -1344,19 +1347,48 @@ function findMatchingRule(record) {
   return getIncomeRules().find(r => record.merchant.includes(r.pattern)) || null;
 }
 
+function withholdingAmount(gross) {
+  // 源泉徴収税額（国税庁計算式）
+  if (gross <= 1000000) return Math.round(gross * 0.1021);
+  return Math.round((gross - 1000000) * 0.2042 + 102100);
+}
+
 function calcBreakdown(netAmount, rule) {
+  const hasW   = rule.deductions.some(d => d.type === 'withholding');
   const pcts   = rule.deductions.filter(d => d.type === 'percent');
   const fixes  = rule.deductions.filter(d => d.type === 'fixed');
-  const totRate  = pcts.reduce((s, d) => s + Number(d.value), 0);
+  const totPct   = pcts.reduce((s, d) => s + Number(d.value), 0);
   const totFixed = fixes.reduce((s, d) => s + Number(d.value), 0);
-  // net = gross*(1 - totRate/100) - totFixed  →  gross = (net+totFixed)/(1-totRate/100)
-  const gross = Math.round((netAmount + totFixed) / (1 - totRate / 100));
-  const items = rule.deductions.map(d => ({
-    name:   d.name,
-    type:   d.type,
-    rate:   Number(d.value),
-    amount: d.type === 'percent' ? Math.round(gross * Number(d.value) / 100) : Number(d.value)
-  }));
+
+  let gross;
+  if (hasW) {
+    // Step1: 10.21%で仮計算
+    const est = Math.round((netAmount + totFixed) / (1 - (totPct + 10.21) / 100));
+    if (est <= 1000000) {
+      gross = est;
+    } else {
+      // 超過ブラケット: gross*(1-(totPct+20.42)/100) = net - 102100 + totFixed
+      gross = Math.round((netAmount - 102100 + totFixed) / (1 - (totPct + 20.42) / 100));
+    }
+  } else {
+    gross = Math.round((netAmount + totFixed) / (1 - totPct / 100));
+  }
+
+  const items = rule.deductions.map(d => {
+    let amount = 0, label = '';
+    if (d.type === 'percent') {
+      amount = Math.round(gross * Number(d.value) / 100);
+      label  = `${Number(d.value)}%`;
+    } else if (d.type === 'fixed') {
+      amount = Number(d.value);
+      label  = '固定';
+    } else if (d.type === 'withholding') {
+      amount = withholdingAmount(gross);
+      const rate = gross <= 1000000 ? '10.21%' : '10.21%+20.42%超過';
+      label  = `源泉 ${rate}`;
+    }
+    return { name: d.name || '源泉徴収', type: d.type, label, amount };
+  });
   return { gross, net: netAmount, items };
 }
 
@@ -1408,18 +1440,29 @@ function openEditPanel(rule) {
 function renderDedList() {
   document.getElementById('deductionList').innerHTML = _editDeds.map((d, i) => `
     <div class="ded-row">
-      <input type="text"   value="${esc(d.name)}"  placeholder="名称（例: 所得税）"  oninput="_editDeds[${i}].name=this.value">
-      <select onchange="_editDeds[${i}].type=this.value;renderDedList()">
-        <option value="percent" ${d.type==='percent'?'selected':''}>%（総支給比）</option>
-        <option value="fixed"   ${d.type==='fixed'  ?'selected':''}>¥ 固定額</option>
+      <input type="text" value="${esc(d.name)}"
+             placeholder="${d.type==='withholding'?'源泉徴収':'名称（例: 所得税）'}"
+             oninput="_editDeds[${i}].name=this.value"
+             style="flex:1;padding:6px 8px;font-size:12px;font-family:inherit;border:1px solid #ccc;border-radius:5px;">
+      <select onchange="_editDeds[${i}].type=this.value;if(this.value==='withholding')_editDeds[${i}].value=0;renderDedList()"
+              style="padding:6px;font-size:12px;font-family:inherit;border:1px solid #ccc;border-radius:5px;">
+        <option value="percent"     ${d.type==='percent'    ?'selected':''}>%（総支給比）</option>
+        <option value="fixed"       ${d.type==='fixed'      ?'selected':''}>¥ 固定額</option>
+        <option value="withholding" ${d.type==='withholding'?'selected':''}>源泉徴収（自動）</option>
       </select>
-      <input type="number" value="${Number(d.value)}" min="0" step="${d.type==='percent'?'0.01':'1'}" oninput="_editDeds[${i}].value=this.value">
-      <span class="ded-unit">${d.type==='percent'?'%':'円'}</span>
+      ${d.type === 'withholding'
+        ? `<span style="font-size:11px;color:#1a73e8;white-space:nowrap;padding:0 4px">10.21%<br><span style="color:#888">超過:20.42%</span></span>`
+        : `<input type="number" value="${Number(d.value)}" min="0" step="${d.type==='percent'?'0.01':'1'}"
+                  oninput="_editDeds[${i}].value=this.value"
+                  style="width:72px;padding:6px 8px;font-size:12px;font-family:inherit;border:1px solid #ccc;border-radius:5px;">
+           <span class="ded-unit">${d.type==='percent'?'%':'円'}</span>`
+      }
       <button class="ded-del" onclick="_editDeds.splice(${i},1);renderDedList()">×</button>
     </div>`).join('');
 }
 
-function addDeduction() { _editDeds.push({ name:'', type:'percent', value:0 }); renderDedList(); }
+function addDeduction()    { _editDeds.push({ name:'', type:'percent', value:0 }); renderDedList(); }
+function addWithholding()  { _editDeds.push({ name:'源泉徴収', type:'withholding', value:0 }); renderDedList(); }
 
 function saveRule() {
   const name    = document.getElementById('editRuleName').value.trim();
