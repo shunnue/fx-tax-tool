@@ -63,6 +63,7 @@ tr.selected td { background: #e3f2fd !important; }
 .merchant-cell { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .amount-cell { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
 .amount-large { color: #c62828; }
+.amount-income { color: #2e7d32; font-weight: 600; }
 .region-badge { font-size: 11px; padding: 1px 6px; border-radius: 10px; }
 .region-domestic { background: #e8f5e9; color: #2e7d32; }
 .region-overseas { background: #fff3e0; color: #e65100; }
@@ -334,20 +335,23 @@ const FORMATS = [
     name: 'PayPay銀行',
     encoding: 'shift-jis',
     detect(headers) {
-      return headers.some(h => h.includes('操作日(年)') || h.includes('操作日(年)')) &&
+      return headers.some(h => h.includes('操作日(年)')) &&
              headers.some(h => h.includes('お支払金額'));
     },
     parse(fields) {
-      const year  = (fields[0] || '').trim();
-      const month = (fields[1] || '').trim().padStart(2, '0');
-      const day   = (fields[2] || '').trim().padStart(2, '0');
-      const date  = `${year}${month}${day}`;
+      const year    = (fields[0] || '').trim();
+      const month   = (fields[1] || '').trim().padStart(2, '0');
+      const day     = (fields[2] || '').trim().padStart(2, '0');
+      const date    = `${year}${month}${day}`;
       const seqNo   = (fields[6] || '').trim();
       const merchant = (fields[7] || '').trim();
       const payment  = parseInt((fields[8] || '0').trim().replace(/[^0-9]/g, '')) || 0;
-      if (payment === 0) return null;
-      const id = `PP_${date}_${seqNo}`;
-      return { id, date, merchant, amount: payment, localAmt: '', currency: '', rate: '', region: '国内', source: 'PayPay銀行' };
+      const deposit  = parseInt((fields[9] || '0').trim().replace(/[^0-9]/g, '')) || 0;
+      if (payment === 0 && deposit === 0) return null;
+      const direction = deposit > 0 ? '入金' : '支出';
+      const amount    = deposit > 0 ? deposit : payment;
+      const id = `PP_${direction === '入金' ? 'IN' : 'OUT'}_${date}_${seqNo}`;
+      return { id, date, merchant, amount, direction, localAmt: '', currency: '', rate: '', region: '国内', source: 'PayPay銀行' };
     }
   },
   {
@@ -938,7 +942,7 @@ function renderTable() {
       `</td>` +
       `<td class="date-cell">${fmtDate(r.date)}</td>` +
       `<td class="merchant-cell" title="${esc(r.merchant)}">${isAmazonMerchant(r.merchant) && findAmazonOrders(r).length > 0 ? '<span style="color:#e47911;font-size:11px">🛒</span> ' : ''}${esc(r.merchant)}</td>` +
-      `<td class="amount-cell${r.amount>=10000?' amount-large':''}">¥${r.amount.toLocaleString()}</td>` +
+      `<td class="amount-cell${r.direction==='入金'?' amount-income':r.amount>=10000?' amount-large':''}">${r.direction==='入金'?'+':''}¥${r.amount.toLocaleString()}</td>` +
       `<td>${r.region ? `<span class="region-badge ${r.region==='海外'?'region-overseas':'region-domestic'}">${esc(r.region)}</span>` : ''}</td>` +
       `<td><span class="source-badge">${esc(r.source)}</span></td>` +
       `<td>${cat ? `<span class="cat-badge cat-${esc(cat)}">${esc(cat)}</span>` : '<span class="cat-none">未分類</span>'}</td>` +
@@ -956,13 +960,17 @@ function renderTable() {
 }
 
 function renderStats() {
-  const tags  = getTags();
-  const total = filtered.reduce((s, r) => s + r.amount, 0);
+  const tags    = getTags();
+  const expense = filtered.filter(r => r.direction !== '入金');
+  const income  = filtered.filter(r => r.direction === '入金');
+  const expTotal = expense.reduce((s, r) => s + r.amount, 0);
+  const incTotal = income.reduce((s, r) => s + r.amount, 0);
   document.getElementById('filteredCount').textContent = filtered.length.toLocaleString();
-  document.getElementById('filteredTotal').textContent = total.toLocaleString();
-  document.getElementById('totalStat').textContent     = `全体: ${allRecords.length.toLocaleString()}件`;
+  document.getElementById('filteredTotal').textContent = expTotal.toLocaleString();
+  document.getElementById('totalStat').textContent =
+    income.length > 0 ? `入金合計: +¥${incTotal.toLocaleString()}` : `全体: ${allRecords.length.toLocaleString()}件`;
   const untagged = allRecords.filter(r => !(tags[r.id]||{}).cat).length;
-  document.getElementById('untaggedStat').textContent  = `未分類: ${untagged.toLocaleString()}件`;
+  document.getElementById('untaggedStat').textContent = `未分類: ${untagged.toLocaleString()}件`;
 }
 
 function renderSummary() {
@@ -1002,7 +1010,8 @@ function selectRow(id) {
   document.getElementById('detailArea').innerHTML = `
     <div class="info-row"><span class="lbl">日付</span><span class="val">${fmtDate(r.date)}</span></div>
     <div class="info-row"><span class="lbl">店舗名</span><span class="val">${esc(r.merchant)}</span></div>
-    <div class="info-row"><span class="lbl">金額</span><span class="val" style="color:#c62828;font-size:15px">¥${r.amount.toLocaleString()}</span></div>
+    <div class="info-row"><span class="lbl">金額</span><span class="val" style="color:${r.direction==='入金'?'#2e7d32':'#c62828'};font-size:15px">${r.direction==='入金'?'+':''}¥${r.amount.toLocaleString()}</span></div>
+    <div class="info-row"><span class="lbl">方向</span><span class="val" style="color:${r.direction==='入金'?'#2e7d32':'#555'};font-weight:600">${r.direction||'支出'}</span></div>
     <div class="info-row"><span class="lbl">地域</span><span class="val">${esc(r.region||'-')}</span></div>
     <div class="info-row"><span class="lbl">口座</span><span class="val">${esc(r.source)}</span></div>
     ${r.localAmt ? `<div class="info-row"><span class="lbl">現地通貨</span><span class="val">${esc(r.localAmt)} ${esc(r.currency)} (レート: ${esc(r.rate)})</span></div>` : ''}
