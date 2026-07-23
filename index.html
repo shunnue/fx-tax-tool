@@ -498,7 +498,15 @@ function parseCSVLine(line) {
 }
 
 async function decodeBuffer(buf, enc) {
-  try { return new TextDecoder(enc, { fatal: true }).decode(buf); } catch { return null; }
+  try {
+    // fatal:false → 不正バイトを置換文字(U+FFFD)に変換して継続（fatal:trueだとPayPay等一部Shift-JISが全滅する）
+    const text = new TextDecoder(enc, { fatal: false }).decode(buf);
+    // 実際に目的のエンコーディングで読めているか検証：UTF-8試行でShift-JISを誤検知しないよう
+    // 置換文字が大量にあれば失敗扱い（全体の5%超）
+    if (enc !== 'utf-8') return text;
+    const badRatio = (text.match(/�/g) || []).length / text.length;
+    return badRatio > 0.05 ? null : text;
+  } catch { return null; }
 }
 
 async function parseFile(fileHandle, path) {
