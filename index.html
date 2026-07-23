@@ -306,6 +306,7 @@ tr.bulk-selected td { background: #e8f0fe !important; }
       <div id="deductionList"></div>
       <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
         <button onclick="addWithholding()" style="padding:5px 12px;border:1px solid #1a73e8;background:#e8f0fe;color:#1a73e8;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600">＋ 源泉徴収</button>
+        <button onclick="addFee()"         style="padding:5px 12px;border:1px solid #e65100;background:#fff3e0;color:#e65100;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600">＋ 手数料</button>
         <button onclick="addDeduction()"   style="padding:5px 12px;border:1px dashed #888;background:white;color:#555;border-radius:5px;cursor:pointer;font-size:12px;font-family:inherit">＋ その他の控除</button>
       </div>
       <div style="display:flex;gap:8px;margin-top:14px">
@@ -1431,7 +1432,7 @@ function calcBreakdown(netAmount, rule) {
       const rate = gross <= 1000000 ? '10.21%' : '10.21%+20.42%超過';
       label  = `源泉 ${rate}`;
     }
-    return { name: d.name || '源泉徴収', type: d.type, label, amount };
+    return { name: d.name || (d.type === 'withholding' ? '源泉徴収' : '控除'), type: d.type, label, amount };
   });
   return { gross, net: netAmount, items };
 }
@@ -1506,13 +1507,14 @@ function renderDedList() {
 }
 
 function addDeduction()    { _editDeds.push({ name:'', type:'percent', value:0 }); renderDedList(); }
+function addFee()          { _editDeds.push({ name:'手数料', type:'fixed', value:0 }); renderDedList(); }
 function addWithholding()  { _editDeds.push({ name:'源泉徴収', type:'withholding', value:0 }); renderDedList(); }
 
 function saveRule() {
   const name    = document.getElementById('editRuleName').value.trim();
   const pattern = document.getElementById('editRulePattern').value.trim();
   if (!name || !pattern) { alert('ルール名と文字列は必須です。'); return; }
-  const rule = { name, pattern, deductions: _editDeds.filter(d => d.name.trim()) };
+  const rule = { name, pattern, deductions: _editDeds.filter(d => d.type === 'withholding' || d.name.trim() || Number(d.value) > 0) };
   const rules = getIncomeRules();
   if (_ruleEditIdx === null) rules.push(rule); else rules[_ruleEditIdx] = rule;
   saveIncomeRules(rules);
