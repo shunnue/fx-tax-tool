@@ -401,8 +401,35 @@ const FORMATS = [
     name: 'PayPay銀行',
     encoding: 'shift-jis',
     detect(headers) {
-      return headers.some(h => h.includes('操作日(年)')) &&
-             headers.some(h => h.includes('お支払金額'));
+      // 半角括弧(年) / 全角括弧（年）両方に対応
+      const hasDate = headers.some(h => h.includes('操作日') && h.includes('年'));
+      const hasAmt  = headers.some(h => h.includes('お支払金額') || h.includes('支払金額'));
+      return hasDate && hasAmt;
+    },
+    parse(fields) {
+      const year    = (fields[0] || '').trim();
+      const month   = (fields[1] || '').trim().padStart(2, '0');
+      const day     = (fields[2] || '').trim().padStart(2, '0');
+      const date    = `${year}${month}${day}`;
+      const seqNo   = (fields[6] || '').trim();
+      const merchant = (fields[7] || '').trim();
+      const payment  = parseInt((fields[8] || '0').trim().replace(/[^0-9]/g, '')) || 0;
+      const deposit  = parseInt((fields[9] || '0').trim().replace(/[^0-9]/g, '')) || 0;
+      if (payment === 0 && deposit === 0) return null;
+      const direction = deposit > 0 ? '入金' : '支出';
+      const amount    = deposit > 0 ? deposit : payment;
+      const id = `PP_${direction === '入金' ? 'IN' : 'OUT'}_${date}_${seqNo}`;
+      return { id, date, merchant, amount, direction, localAmt: '', currency: '', rate: '', region: '国内', source: 'PayPay銀行' };
+    }
+  },
+  {
+    id: 'paypay_bank_utf8',
+    name: 'PayPay銀行',
+    encoding: 'utf-8',
+    detect(headers) {
+      const hasDate = headers.some(h => h.includes('操作日') && h.includes('年'));
+      const hasAmt  = headers.some(h => h.includes('お支払金額') || h.includes('支払金額'));
+      return hasDate && hasAmt;
     },
     parse(fields) {
       const year    = (fields[0] || '').trim();
@@ -507,11 +534,13 @@ async function parseFile(fileHandle, path) {
 
 async function parseFileFromObj(file) {
   const buf = await file.arrayBuffer();
+  let firstLine = '';
   for (const fmt of FORMATS) {
     const text = await decodeBuffer(buf, fmt.encoding);
     if (!text) continue;
     const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l);
     if (lines.length < 2) continue;
+    if (!firstLine) firstLine = lines[0];  // 診断用に最初の行を保存
     const headers = parseCSVLine(lines[0]);
     if (!fmt.detect(headers)) continue;
     const records = [];
@@ -527,7 +556,7 @@ async function parseFileFromObj(file) {
     }
     return { formatName: fmt.name, records };
   }
-  return null;
+  return { formatName: null, records: null, firstLine };  // null = 未対応
 }
 
 async function handleCSVImport(files) {
@@ -538,9 +567,13 @@ async function handleCSVImport(files) {
   const existing = new Map(allRecords.map(r => [r.id, r]));
   let totalAdded = 0, totalDup = 0, totalFiles = 0;
 
+  const failedFiles = [];
   for (const file of files) {
     const result = await parseFileFromObj(file);
-    if (!result) continue;
+    if (!result.formatName) {
+      failedFiles.push({ name: file.name, firstLine: result.firstLine || '（読み取り不可）' });
+      continue;
+    }
     totalFiles++;
     for (const rec of result.records) {
       if (!existing.has(rec.id)) { existing.set(rec.id, rec); totalAdded++; }
@@ -549,7 +582,10 @@ async function handleCSVImport(files) {
   }
 
   if (totalFiles === 0) {
-    alert('対応フォーマットのCSVが見つかりませんでした。\n楽天銀行・楽天カード形式のCSVをお試しください。');
+    const diag = failedFiles.map(f =>
+      `【${f.name}】\nヘッダー行: ${f.firstLine.slice(0, 120)}`
+    ).join('\n\n');
+    alert(`対応フォーマットのCSVが見つかりませんでした。\n\n${diag}\n\n対応フォーマット: 楽天銀行デビット / 楽天カード / PayPay銀行 / 汎用国内CSV`);
     return;
   }
 
