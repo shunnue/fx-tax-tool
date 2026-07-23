@@ -309,25 +309,35 @@ const FORMATS = [
     }
   },
   {
-    // SBI証券・銀行など 汎用的な日本語CSV
+    // 楽天銀行口座明細・SBI・その他 日本語CSV（入金・出金両対応）
     id: 'jp_generic',
     name: '汎用（国内）',
     encoding: 'shift-jis',
     detect(headers) {
       const h = headers.join('');
       return (h.includes('日付') || h.includes('取引日') || h.includes('計上日')) &&
-             (h.includes('金額') || h.includes('出金') || h.includes('支払'));
+             (h.includes('金額') || h.includes('出金') || h.includes('支払') || h.includes('入金'));
     },
     parse(fields, headers) {
       const h = headers;
-      const dateIdx  = h.findIndex(s => s.includes('日付') || s.includes('取引日') || s.includes('計上日'));
-      const nameIdx  = h.findIndex(s => s.includes('摘要') || s.includes('内容') || s.includes('店名') || s.includes('名称'));
-      const amtIdx   = h.findIndex(s => s.includes('出金') || s.includes('支払') || s.includes('金額'));
+      const dateIdx = h.findIndex(s => s.includes('日付') || s.includes('取引日') || s.includes('計上日'));
+      const nameIdx = h.findIndex(s => s.includes('摘要') || s.includes('内容') || s.includes('店名') || s.includes('名称'));
+      const outIdx  = h.findIndex(s => s.includes('出金') || s.includes('支払') || s.includes('引出'));
+      const inIdx   = h.findIndex(s => s.includes('入金') || s.includes('預入'));
+      const singleAmtIdx = (outIdx < 0 && inIdx < 0) ? h.findIndex(s => s.includes('金額')) : -1;
+
       const date     = ((fields[dateIdx >= 0 ? dateIdx : 0] || '').trim()).replace(/[\/-]/g,'');
       const merchant = (fields[nameIdx >= 0 ? nameIdx : 1] || '').trim();
-      const amount   = parseInt(((fields[amtIdx >= 0 ? amtIdx : 2] || '0').trim()).replace(/[^0-9]/g,'')) || 0;
-      const id       = `JP_${date}_${merchant}_${amount}`;
-      return { id, date, merchant, amount, localAmt:'', currency:'', rate:'', region:'国内', source:'汎用CSV(国内)' };
+      const outAmt   = outIdx >= 0 ? parseInt((fields[outIdx]||'0').trim().replace(/[^0-9]/g,''))||0 : 0;
+      const inAmt    = inIdx  >= 0 ? parseInt((fields[inIdx] ||'0').trim().replace(/[^0-9]/g,''))||0 : 0;
+      const singleAmt = singleAmtIdx >= 0 ? parseInt((fields[singleAmtIdx]||'0').trim().replace(/[^0-9]/g,''))||0 : 0;
+
+      if (outAmt === 0 && inAmt === 0 && singleAmt === 0) return null;
+
+      const direction = (inAmt > 0 && outAmt === 0) ? '入金' : '支出';
+      const amount    = direction === '入金' ? inAmt : outAmt > 0 ? outAmt : singleAmt;
+      const id        = `JP_${direction==='入金'?'IN':'OUT'}_${date}_${merchant}_${amount}`;
+      return { id, date, merchant, amount, direction, localAmt:'', currency:'', rate:'', region:'国内', source:'銀行口座（汎用）' };
     }
   },
   {
@@ -360,18 +370,28 @@ const FORMATS = [
     encoding: 'utf-8',
     detect(headers) {
       const h = headers.map(s => s.toLowerCase()).join('');
-      return (h.includes('date') || h.includes('日付')) && (h.includes('amount') || h.includes('金額'));
+      return (h.includes('date') || h.includes('日付')) && (h.includes('amount') || h.includes('金額') || h.includes('出金') || h.includes('入金'));
     },
     parse(fields, headers) {
       const h = headers.map(s => s.toLowerCase());
-      const dateIdx  = h.findIndex(s => s.includes('date') || s.includes('日付'));
-      const nameIdx  = h.findIndex(s => s.includes('name') || s.includes('description') || s.includes('merchant') || s.includes('店') || s.includes('摘要'));
-      const amtIdx   = h.findIndex(s => s.includes('amount') || s.includes('金額'));
+      const dateIdx = h.findIndex(s => s.includes('date') || s.includes('日付'));
+      const nameIdx = h.findIndex(s => s.includes('name') || s.includes('description') || s.includes('merchant') || s.includes('店') || s.includes('摘要'));
+      const outIdx  = h.findIndex(s => s.includes('出金') || s.includes('withdrawal'));
+      const inIdx   = h.findIndex(s => s.includes('入金') || s.includes('deposit'));
+      const singleAmtIdx = (outIdx < 0 && inIdx < 0) ? h.findIndex(s => s.includes('amount') || s.includes('金額')) : -1;
+
       const date     = ((fields[dateIdx >= 0 ? dateIdx : 0] || '').trim()).replace(/[\/-]/g,'');
       const merchant = (fields[nameIdx >= 0 ? nameIdx : 1] || '').trim();
-      const amount   = parseInt(((fields[amtIdx >= 0 ? amtIdx : 2] || '0').trim()).replace(/[^0-9-]/g,'')) || 0;
-      const id       = `UTF_${date}_${merchant}_${amount}`;
-      return { id, date, merchant, amount, localAmt:'', currency:'', rate:'', region:'', source:'汎用CSV(UTF-8)' };
+      const outAmt   = outIdx >= 0 ? parseInt((fields[outIdx]||'0').trim().replace(/[^0-9]/g,''))||0 : 0;
+      const inAmt    = inIdx  >= 0 ? parseInt((fields[inIdx] ||'0').trim().replace(/[^0-9]/g,''))||0 : 0;
+      const singleAmt = singleAmtIdx >= 0 ? parseInt((fields[singleAmtIdx]||'0').trim().replace(/[^0-9]/g,''))||0 : 0;
+
+      if (outAmt === 0 && inAmt === 0 && singleAmt === 0) return null;
+
+      const direction = (inAmt > 0 && outAmt === 0) ? '入金' : '支出';
+      const amount    = direction === '入金' ? inAmt : outAmt > 0 ? outAmt : singleAmt;
+      const id        = `UTF_${direction==='入金'?'IN':'OUT'}_${date}_${merchant}_${amount}`;
+      return { id, date, merchant, amount, direction, localAmt:'', currency:'', rate:'', region:'', source:'汎用CSV(UTF-8)' };
     }
   }
 ];
