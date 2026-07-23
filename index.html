@@ -30,9 +30,12 @@ body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; background: #f5f6fa; 
 .format-list li { margin: 4px 0 4px 16px; color: #444; line-height: 1.6; }
 .hint { font-size: 12px; color: #aaa; text-align: center; line-height: 1.8; }
 
-#sourceBar { background: #e8f0fe; border-bottom: 1px solid #c5d5f7; padding: 6px 20px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: #444; flex-shrink: 0; }
-.source-chip { background: white; border: 1px solid #c5d5f7; border-radius: 12px; padding: 2px 10px; color: #1a56c4; font-weight: 500; }
-.source-chip .cnt { opacity: 0.7; font-weight: normal; }
+#sourceBar { background: white; border-bottom: 2px solid #e0e0e0; padding: 0 12px; display: flex; flex-wrap: wrap; gap: 0; align-items: flex-end; flex-shrink: 0; }
+.src-tab { padding: 8px 16px; border: none; background: none; cursor: pointer; font-size: 13px; color: #666; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.15s; font-family: inherit; }
+.src-tab:hover { color: #1a73e8; background: #f5f8ff; }
+.src-tab.active { color: #1a73e8; border-bottom-color: #1a73e8; font-weight: 700; }
+.src-tab .tab-cnt { font-size: 11px; color: #aaa; margin-left: 4px; }
+.src-tab.active .tab-cnt { color: #1a73e8; opacity: 0.8; }
 
 .toolbar { padding: 8px 16px; background: white; border-bottom: 1px solid #e0e0e0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; flex-shrink: 0; }
 .toolbar input[type=text] { padding: 5px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; height: 30px; width: 180px; }
@@ -181,7 +184,7 @@ tr.bulk-selected td { background: #e8f0fe !important; }
       <option value="日用品">日用品</option>
       <option value="その他">その他</option>
     </select>
-    <select id="filterSource" onchange="applyFilters()">
+    <select id="filterSource" onchange="applyFilters()" style="display:none">
       <option value="">すべての口座</option>
     </select>
     <select id="filterRegion" onchange="applyFilters()">
@@ -324,6 +327,27 @@ const FORMATS = [
       const amount   = parseInt(((fields[amtIdx >= 0 ? amtIdx : 2] || '0').trim()).replace(/[^0-9]/g,'')) || 0;
       const id       = `JP_${date}_${merchant}_${amount}`;
       return { id, date, merchant, amount, localAmt:'', currency:'', rate:'', region:'国内', source:'汎用CSV(国内)' };
+    }
+  },
+  {
+    id: 'paypay_bank',
+    name: 'PayPay銀行',
+    encoding: 'shift-jis',
+    detect(headers) {
+      return headers.some(h => h.includes('操作日(年)') || h.includes('操作日(年)')) &&
+             headers.some(h => h.includes('お支払金額'));
+    },
+    parse(fields) {
+      const year  = (fields[0] || '').trim();
+      const month = (fields[1] || '').trim().padStart(2, '0');
+      const day   = (fields[2] || '').trim().padStart(2, '0');
+      const date  = `${year}${month}${day}`;
+      const seqNo   = (fields[6] || '').trim();
+      const merchant = (fields[7] || '').trim();
+      const payment  = parseInt((fields[8] || '0').trim().replace(/[^0-9]/g, '')) || 0;
+      if (payment === 0) return null;
+      const id = `PP_${date}_${seqNo}`;
+      return { id, date, merchant, amount: payment, localAmt: '', currency: '', rate: '', region: '国内', source: 'PayPay銀行' };
     }
   },
   {
@@ -756,17 +780,20 @@ function showApp() {
 function renderSourceBar() {
   const totals = {};
   for (const r of allRecords) totals[r.source] = (totals[r.source] || 0) + 1;
+  const active = document.getElementById('filterSource').value;
 
-  const dupTotal = loadedFiles.reduce((s, f) => s + (f.dup || 0), 0);
+  const allTab = `<button class="src-tab${active === '' ? ' active' : ''}" onclick="setSourceTab('')">すべて <span class="tab-cnt">${allRecords.length}件</span></button>`;
+  const srcTabs = Object.entries(totals).map(([src, cnt]) =>
+    `<button class="src-tab${active === src ? ' active' : ''}" onclick="setSourceTab('${src.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">${esc(src)} <span class="tab-cnt">${cnt}件</span></button>`
+  ).join('');
 
-  document.getElementById('sourceBar').innerHTML =
-    '<span style="color:#888;font-size:11px">読み込み済み:</span>' +
-    Object.entries(totals).map(([src, cnt]) =>
-      `<span class="source-chip">${esc(src)} <span class="cnt">${cnt}件</span></span>`
-    ).join('') +
-    `<span style="color:#888;margin-left:auto;font-size:11px">
-       ${loadedFiles.length}ファイル ｜ 重複除外 ${dupTotal}件 ｜ 合計 ${allRecords.length}件
-     </span>`;
+  document.getElementById('sourceBar').innerHTML = allTab + srcTabs;
+}
+
+function setSourceTab(source) {
+  document.getElementById('filterSource').value = source;
+  renderSourceBar();
+  applyFilters();
 }
 
 // ─── Amazon照合 ─────────────────────────────────────────────────────────────
