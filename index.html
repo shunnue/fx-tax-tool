@@ -625,7 +625,8 @@ async function handleCSVImport(files) {
 // ─── レコード正規化（旧バージョンのソースラベルを移行） ─────────────────────
 function migrateSource(rec) {
   // 旧バージョンで '楽天銀行' として保存されたデビットレコードを正しいラベルに移行
-  if (rec.source === '楽天銀行') rec.source = '楽天銀行（デビット）';
+  // IDが RB_ で始まるレコードのみ対象（口座明細との混同を防ぐ）
+  if (rec.source === '楽天銀行' && (rec.id || '').startsWith('RB_')) rec.source = '楽天銀行（デビット）';
   return rec;
 }
 
