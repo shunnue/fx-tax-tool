@@ -355,7 +355,8 @@ const FORMATS = [
     encoding: 'shift-jis',
     detect(headers) {
       const h = headers.join('');
-      return h.includes('日付') && h.includes('入出金') && h.includes('残高') && h.includes('取引内容');
+      return (h.includes('日付') || h.includes('取引日')) && h.includes('入出金') && h.includes('残高') &&
+             (h.includes('取引内容') || h.includes('入出金内容'));
     },
     parse(fields) {
       const date    = (fields[0] || '').trim();
