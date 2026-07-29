@@ -150,6 +150,7 @@ tr.bulk-selected td { background: #e8f0fe !important; }
   <div class="header-actions">
     <button class="btn btn-refresh" id="refreshBtn" onclick="refreshFolder()" style="display:none">🔄 再読み込み</button>
     <button class="btn" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.4)" onclick="openRuleModal()">⚙️ 収入ルール</button>
+    <button class="btn" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.4)" onclick="openCatRuleModal()">🏷️ カテゴリルール</button>
     <button class="btn btn-folder" onclick="openFolder()">📂 フォルダを選択</button>
   </div>
 </div>
@@ -317,6 +318,20 @@ tr.bulk-selected td { background: #e8f0fe !important; }
     </div>
     <div style="text-align:right;margin-top:16px">
       <button onclick="closeRuleModal()" style="padding:8px 20px;background:#e8eaed;color:#555;border:none;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- カテゴリルールモーダル -->
+<div id="catRuleModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2>🏷️ カテゴリルール設定</h2>
+    <p style="font-size:12px;color:#888;margin-bottom:14px">店舗名に含まれる文字を指定すると、まだカテゴリ未設定の明細に自動でカテゴリを割り当てます（手動で設定済みの明細は上書きしません）。</p>
+    <div id="catRulesList"></div>
+    <button onclick="addCatRule()" style="width:100%;padding:9px;border:2px dashed #1a73e8;background:white;color:#1a73e8;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;margin-top:4px">＋ ルールを追加</button>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button onclick="saveCatRules()" style="flex:1;padding:9px;background:#1a73e8;color:white;border:none;border-radius:7px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit">保存して適用</button>
+      <button onclick="closeCatRuleModal()" style="padding:9px 18px;background:#e8eaed;color:#555;border:none;border-radius:7px;cursor:pointer;font-size:13px;font-family:inherit">閉じる</button>
     </div>
   </div>
 </div>
@@ -634,6 +649,7 @@ async function handleCSVImport(files) {
   });
   document.getElementById('headerSub').textContent = `${allRecords.length.toLocaleString()} 件（GitHub同期済み）`;
   renderSourceBar();
+  applyCategoryRules();
   applyFilters();
 
   // GitHubへ自動保存
@@ -739,6 +755,7 @@ async function loadFromGitHub() {
     document.getElementById('refreshBtn').style.display = '';
     renderSourceBar();
     showApp();
+    applyCategoryRules();
     applyFilters();
   } else {
     document.getElementById('headerSub').textContent = 'GitHubにデータなし（フォルダを選択して読み込んでください）';
@@ -916,6 +933,7 @@ async function loadFromHandle() {
 
   renderSourceBar();
   showApp();
+  applyCategoryRules();
   applyFilters();
 }
 
@@ -1571,6 +1589,70 @@ function deleteRule(i) {
   const rules = getIncomeRules(); rules.splice(i, 1); saveIncomeRules(rules);
   renderRuleList();
   if (selectedId) selectRow(selectedId);
+}
+
+// ─── カテゴリルール ────────────────────────────────────────────────────────────
+
+let _editCatRules = [];
+
+function getCategoryRules() {
+  try { return JSON.parse(localStorage.getItem('categoryRules') || '[]'); } catch { return []; }
+}
+function saveCategoryRulesRaw(rules) { localStorage.setItem('categoryRules', JSON.stringify(rules)); }
+
+function openCatRuleModal() {
+  _editCatRules = getCategoryRules().map(r => ({...r}));
+  renderCatRuleList();
+  document.getElementById('catRuleModal').classList.add('open');
+}
+function closeCatRuleModal() { document.getElementById('catRuleModal').classList.remove('open'); }
+
+function renderCatRuleList() {
+  document.getElementById('catRulesList').innerHTML = _editCatRules.map((r, i) => `
+    <div class="ded-row">
+      <input type="text" value="${esc(r.pattern)}" placeholder="店舗名に含まれる文字列（例: スターバックス）"
+             oninput="_editCatRules[${i}].pattern=this.value"
+             style="flex:1;padding:6px 8px;font-size:12px;font-family:inherit;border:1px solid #ccc;border-radius:5px;">
+      <select onchange="_editCatRules[${i}].category=this.value"
+              style="padding:6px;font-size:12px;font-family:inherit;border:1px solid #ccc;border-radius:5px;">
+        ${CATEGORIES.map(c => `<option value="${c}" ${r.category===c?'selected':''}>${c}</option>`).join('')}
+      </select>
+      <button class="ded-del" onclick="_editCatRules.splice(${i},1);renderCatRuleList()">×</button>
+    </div>`).join('');
+}
+
+function addCatRule() {
+  _editCatRules.push({ pattern: '', category: CATEGORIES[0] });
+  renderCatRuleList();
+}
+
+function saveCatRules() {
+  const rules = _editCatRules.filter(r => r.pattern.trim());
+  saveCategoryRulesRaw(rules);
+  const applied = applyCategoryRules();
+  closeCatRuleModal();
+  applyFilters();
+  renderSourceBar();
+  alert(`✅ ルールを保存しました\n未分類だった ${applied}件 にカテゴリを自動設定しました。`);
+}
+
+// 未分類（tag.catが空）の明細にのみルールを適用。既存の手動設定は上書きしない。
+function applyCategoryRules() {
+  const rules = getCategoryRules();
+  if (rules.length === 0) return 0;
+  const tags = getTags();
+  let changed = 0;
+  for (const r of allRecords) {
+    if (tags[r.id] && tags[r.id].cat) continue;
+    const hit = rules.find(rule => rule.pattern && r.merchant.includes(rule.pattern));
+    if (hit) {
+      const existing = tags[r.id] || {};
+      tags[r.id] = { cat: hit.category, memo: existing.memo || '' };
+      changed++;
+    }
+  }
+  if (changed > 0) localStorage.setItem('taxTags_v2', JSON.stringify(tags));
+  return changed;
 }
 
 // 起動時：GitHubトークンがあればクラウドから、なければローカルフォルダから
