@@ -622,6 +622,13 @@ async function handleCSVImport(files) {
   }
 }
 
+// ─── レコード正規化（旧バージョンのソースラベルを移行） ─────────────────────
+function migrateSource(rec) {
+  // 旧バージョンで '楽天銀行' として保存されたデビットレコードを正しいラベルに移行
+  if (rec.source === '楽天銀行') rec.source = '楽天銀行（デビット）';
+  return rec;
+}
+
 // ─── アプリ状態 ─────────────────────────────────────────────────────────────
 
 let allRecords  = [];
@@ -677,7 +684,7 @@ async function loadFromGitHub() {
 
   const master = await ghRaw('taxdata_master.json');
   if (master && master.version === 1 && Array.isArray(master.records) && master.records.length > 0) {
-    for (const rec of master.records) dedup.set(rec.id, rec);
+    for (const rec of master.records) { migrateSource(rec); dedup.set(rec.id, rec); }
     const tags = getTags();
     let changed = false;
     for (const rec of master.records) {
@@ -825,8 +832,8 @@ async function loadFromHandle() {
     const jsonHandle = await dirHandle.getFileHandle('taxdata_master.json');
     const master = await loadMasterJSON(jsonHandle);
     if (master) {
-      // レコードを dedup に登録
-      for (const rec of master.records) dedup.set(rec.id, rec);
+      // レコードを dedup に登録（旧ソースラベルを移行）
+      for (const rec of master.records) { migrateSource(rec); dedup.set(rec.id, rec); }
       // 埋め込みタグ・メモを localStorage にマージ（localStorage 側が既に入力済みなら優先しない）
       const tags = getTags();
       let changed = false;
