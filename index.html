@@ -178,6 +178,7 @@ tr.bulk-selected td { background: #e8f0fe !important; }
     <h4>📄 対応フォーマット（自動判別）</h4>
     <ul>
       <li>楽天銀行 デビットカード明細（Shift-JIS CSV）</li>
+      <li>楽天銀行 口座取引明細（Shift-JIS CSV）</li>
       <li>楽天カード 利用明細（Shift-JIS CSV）</li>
       <li>一般的な日付・金額・店舗名CSV（UTF-8）</li>
     </ul>
@@ -346,6 +347,30 @@ const FORMATS = [
       // 照会番号（取引固有ID）を重複排除キーにする
       const id = inquiryNo ? `RB_${inquiryNo}` : `RB_${date}_${merchant}_${amount}`;
       return { id, date, merchant, amount, localAmt, currency, rate, region, approvalNo, source: '楽天銀行（デビット）' };
+    }
+  },
+  {
+    id: 'rakuten_bank_stmt',
+    name: '楽天銀行（口座明細）',
+    encoding: 'shift-jis',
+    detect(headers) {
+      const h = headers.join('');
+      return h.includes('日付') && h.includes('入出金') && h.includes('残高') && h.includes('取引内容');
+    },
+    parse(fields) {
+      const date    = (fields[0] || '').trim();
+      const amtRaw  = (fields[1] || '').trim();
+      const balance = (fields[2] || '').trim();
+      const desc    = (fields[3] || '').trim();
+      // VISAデビット行はデビット明細CSVで取り込むためスキップ
+      if (desc.includes('デビット')) return null;
+      const amtNum = parseInt(amtRaw.replace(/[^0-9-]/g, '')) || 0;
+      if (amtNum === 0) return null;
+      const direction = amtNum > 0 ? '入金' : '支出';
+      const amount    = Math.abs(amtNum);
+      // 残高は取引ごとに必ず変化するため、日付＋残高で一意なIDになる
+      const id = `RB_STMT_${date}_${balance}`;
+      return { id, date, merchant: desc, amount, direction, localAmt: '', currency: '', rate: '', region: '国内', source: '楽天銀行（口座明細）' };
     }
   },
   {
