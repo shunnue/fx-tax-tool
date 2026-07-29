@@ -643,8 +643,17 @@ function setGHToken(t) { localStorage.setItem('gh_token', t.trim()); }
 
 async function ghRaw(filename) {
   try {
-    const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/data/${filename}?t=${Date.now()}`);
-    return r.ok ? r.json() : null;
+    // GitHub APIを使用（raw.githubusercontent.comはCDNキャッシュが数分残るため即時反映されない）
+    const token = getGHToken();
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/data/${filename}`;
+    const headers = { Accept: 'application/vnd.github.v3+json' };
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const r = await fetch(url, { headers, cache: 'no-store' });
+    if (!r.ok) return null;
+    const meta = await r.json();
+    if (!meta.content) return null;
+    const bytes = Uint8Array.from(atob(meta.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+    return JSON.parse(new TextDecoder().decode(bytes));
   } catch { return null; }
 }
 
