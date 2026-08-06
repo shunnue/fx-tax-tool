@@ -1,8 +1,8 @@
 {
   "version": 1,
   "tool": "税務データ検索ツール",
-  "exportedAt": "2026-07-29T15:23:46.219Z",
-  "count": 753,
+  "exportedAt": "2026-08-06T03:51:06.892Z",
+  "count": 769,
   "records": [
     {
       "id": "RB_74980006004-230301228644",
@@ -31,7 +31,7 @@
       "approvalNo": "140088",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -166,7 +166,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -196,7 +196,7 @@
       "approvalNo": "459652",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -271,7 +271,7 @@
       "approvalNo": "457098",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -316,7 +316,7 @@
       "approvalNo": "141956",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -361,7 +361,7 @@
       "approvalNo": "921627",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -406,7 +406,7 @@
       "approvalNo": "219232",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -481,7 +481,7 @@
       "approvalNo": "013601",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -556,7 +556,7 @@
       "approvalNo": "743213",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -616,7 +616,7 @@
       "approvalNo": "176685",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -811,7 +811,7 @@
       "approvalNo": "215232",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -931,7 +931,7 @@
       "approvalNo": "881114",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -961,7 +961,7 @@
       "approvalNo": "908637",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -976,7 +976,7 @@
       "approvalNo": "682055",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1021,7 +1021,7 @@
       "approvalNo": "704672",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1111,7 +1111,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1141,7 +1141,7 @@
       "approvalNo": "454154",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1216,7 +1216,7 @@
       "approvalNo": "434537",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1261,7 +1261,7 @@
       "approvalNo": "697126",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1276,7 +1276,7 @@
       "approvalNo": "278667",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1321,7 +1321,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1351,7 +1351,7 @@
       "approvalNo": "634213",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1486,7 +1486,7 @@
       "approvalNo": "687291",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1561,7 +1561,7 @@
       "approvalNo": "361248",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1591,7 +1591,7 @@
       "approvalNo": "523870",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1651,7 +1651,7 @@
       "approvalNo": "757225",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1666,7 +1666,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1681,7 +1681,7 @@
       "approvalNo": "987835",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1741,7 +1741,7 @@
       "approvalNo": "956203",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1816,7 +1816,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -1951,7 +1951,7 @@
       "approvalNo": "876462",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2056,7 +2056,7 @@
       "approvalNo": "538940",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2176,7 +2176,7 @@
       "approvalNo": "407965",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2266,7 +2266,7 @@
       "approvalNo": "229129",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2356,7 +2356,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2386,7 +2386,7 @@
       "approvalNo": "261965",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2611,7 +2611,7 @@
       "approvalNo": "184434",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2626,7 +2626,7 @@
       "approvalNo": "306373",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2761,7 +2761,7 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0101-0724RB-torihikimeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -2896,7 +2896,7 @@
       "approvalNo": "321276",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3031,7 +3031,7 @@
       "approvalNo": "382511",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3136,7 +3136,7 @@
       "approvalNo": "149915",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3256,7 +3256,7 @@
       "approvalNo": "564711",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3331,7 +3331,7 @@
       "approvalNo": "376085",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3436,7 +3436,7 @@
       "approvalNo": "186363",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3586,7 +3586,7 @@
       "approvalNo": "355377",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3856,7 +3856,7 @@
       "approvalNo": "934945",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -3931,7 +3931,7 @@
       "approvalNo": "610343",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4201,7 +4201,7 @@
       "approvalNo": "874556",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4321,7 +4321,7 @@
       "approvalNo": "082525",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4531,7 +4531,7 @@
       "approvalNo": "473860",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4576,7 +4576,7 @@
       "approvalNo": "227219",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4786,7 +4786,7 @@
       "approvalNo": "",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4801,7 +4801,7 @@
       "approvalNo": "592176",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4816,7 +4816,7 @@
       "approvalNo": "370176",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4831,7 +4831,7 @@
       "approvalNo": "540166",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -4876,7 +4876,7 @@
       "approvalNo": "506715",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5206,7 +5206,7 @@
       "region": "国内",
       "source": "PayPay銀行",
       "sourceFile": "0101-0723paybank.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5371,7 +5371,7 @@
       "approvalNo": "994533",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5551,7 +5551,7 @@
       "approvalNo": "989719",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5656,7 +5656,7 @@
       "approvalNo": "228386",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5716,7 +5716,7 @@
       "approvalNo": "877375",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5776,7 +5776,7 @@
       "approvalNo": "823995",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5866,7 +5866,7 @@
       "approvalNo": "690564",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -5986,7 +5986,7 @@
       "approvalNo": "519676",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -6301,7 +6301,7 @@
       "approvalNo": "800199",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -6316,7 +6316,7 @@
       "approvalNo": "143014",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -6361,7 +6361,7 @@
       "approvalNo": "758253",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -6421,7 +6421,7 @@
       "approvalNo": "988852",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -6736,7 +6736,7 @@
       "approvalNo": "284524",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -6886,7 +6886,7 @@
       "approvalNo": "731360",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7081,7 +7081,7 @@
       "approvalNo": "367710",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7156,7 +7156,7 @@
       "approvalNo": "385018",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7456,7 +7456,7 @@
       "approvalNo": "114963",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7546,7 +7546,7 @@
       "approvalNo": "371431",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7606,7 +7606,7 @@
       "approvalNo": "725982",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7756,7 +7756,7 @@
       "approvalNo": "346085",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7891,7 +7891,7 @@
       "approvalNo": "538085",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -7996,7 +7996,7 @@
       "approvalNo": "242154",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8041,7 +8041,7 @@
       "approvalNo": "558293",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8131,7 +8131,7 @@
       "region": "国内",
       "source": "PayPay銀行",
       "sourceFile": "0101-0723paybank.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8266,7 +8266,7 @@
       "region": "国内",
       "source": "PayPay銀行",
       "sourceFile": "0101-0723paybank.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8326,7 +8326,7 @@
       "approvalNo": "708148",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8386,7 +8386,7 @@
       "approvalNo": "238903",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8596,7 +8596,7 @@
       "approvalNo": "181146",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8761,7 +8761,7 @@
       "approvalNo": "394683",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -8956,7 +8956,7 @@
       "approvalNo": "297208",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9061,7 +9061,7 @@
       "approvalNo": "885389",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9181,7 +9181,7 @@
       "approvalNo": "209390",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9226,7 +9226,7 @@
       "approvalNo": "612903",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9256,7 +9256,7 @@
       "approvalNo": "592465",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9421,7 +9421,7 @@
       "approvalNo": "362049",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9466,7 +9466,7 @@
       "approvalNo": "390529",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9676,7 +9676,7 @@
       "approvalNo": "306916",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9691,7 +9691,7 @@
       "approvalNo": "247695",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9781,7 +9781,7 @@
       "approvalNo": "452278",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -9856,7 +9856,7 @@
       "approvalNo": "889487",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10126,7 +10126,7 @@
       "approvalNo": "772153",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10291,7 +10291,7 @@
       "approvalNo": "691288",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10321,7 +10321,7 @@
       "approvalNo": "483728",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10486,7 +10486,7 @@
       "approvalNo": "872017",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10666,7 +10666,7 @@
       "region": "国内",
       "source": "PayPay銀行",
       "sourceFile": "0101-0723paybank.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10681,7 +10681,7 @@
       "approvalNo": "034754",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10726,7 +10726,7 @@
       "approvalNo": "131258",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10786,7 +10786,7 @@
       "approvalNo": "435389",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10846,7 +10846,7 @@
       "approvalNo": "573080",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10891,7 +10891,7 @@
       "approvalNo": "087578",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10966,7 +10966,7 @@
       "approvalNo": "485100",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -10981,7 +10981,7 @@
       "approvalNo": "296030",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -11086,7 +11086,7 @@
       "approvalNo": "081138",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -11191,7 +11191,7 @@
       "approvalNo": "313246",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -11296,6 +11296,246 @@
       "approvalNo": "046422",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74980006209-230701272401",
+      "date": "20260726",
+      "merchant": "セブン－イレブン",
+      "amount": 339,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "110489",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "コンビニ",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006209-908015803064",
+      "date": "20260726",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 140,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "311436",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006209-908015801571",
+      "date": "20260726",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 140,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "763467",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74980006210-230901371562",
+      "date": "20260727",
+      "merchant": "フアミリ―マ―トジエイアールシジヨウナ",
+      "amount": 355,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "836955",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74980006209-230900451921",
+      "date": "20260727",
+      "merchant": "ローソン",
+      "amount": 282,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "125899",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006210-908022412062",
+      "date": "20260727",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 430,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "674100",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006210-908022411478",
+      "date": "20260727",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 430,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "823099",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74726406210-000004564954",
+      "date": "20260727",
+      "merchant": "株式会社ＭＡＷ",
+      "amount": 1000,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "595541",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006211-908029212639",
+      "date": "20260728",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 430,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "577490",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74980006212-231001834218",
+      "date": "20260729",
+      "merchant": "セブン－イレブン",
+      "amount": 220,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "753076",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "コンビニ",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006212-908035851189",
+      "date": "20260729",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 430,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "243166",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006212-908035850751",
+      "date": "20260729",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 710,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "230166",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74980006213-231101794881",
+      "date": "20260730",
+      "merchant": "セブン－イレブン",
+      "amount": 220,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "787527",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "コンビニ",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006213-908042370552",
+      "date": "20260730",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 140,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "883658",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006215-908054612535",
+      "date": "20260801",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 4100,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "238390",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_74966006215-908054612097",
+      "date": "20260801",
+      "merchant": "ﾎﾟｺﾁﾔ",
+      "amount": 1410,
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "approvalNo": "225390",
+      "source": "楽天銀行（デビット）",
+      "sourceFile": "0508-0806RB-debitmeisai.csv",
       "cat": "",
       "memo": ""
     }
