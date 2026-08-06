@@ -1,7 +1,7 @@
 {
   "version": 1,
   "tool": "税務データ検索ツール",
-  "exportedAt": "2026-08-06T03:51:06.892Z",
+  "exportedAt": "2026-08-06T03:52:20.171Z",
   "count": 769,
   "records": [
     {
@@ -11416,7 +11416,7 @@
       "approvalNo": "595541",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
