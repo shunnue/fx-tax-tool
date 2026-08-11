@@ -1,7 +1,7 @@
 {
   "version": 1,
   "tool": "税務データ検索ツール",
-  "exportedAt": "2026-08-06T03:52:20.171Z",
+  "exportedAt": "2026-08-11T16:54:31.669Z",
   "count": 769,
   "records": [
     {
@@ -211,7 +211,7 @@
       "approvalNo": "113668",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -226,7 +226,7 @@
       "approvalNo": "321265",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -346,7 +346,7 @@
       "approvalNo": "002240",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -391,7 +391,7 @@
       "approvalNo": "955284",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -436,7 +436,7 @@
       "approvalNo": "551288",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -451,7 +451,7 @@
       "approvalNo": "159352",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -631,7 +631,7 @@
       "approvalNo": "805747",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -661,7 +661,7 @@
       "approvalNo": "459245",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -676,7 +676,7 @@
       "approvalNo": "703220",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -691,7 +691,7 @@
       "approvalNo": "711025",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -706,7 +706,7 @@
       "approvalNo": "478852",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -766,7 +766,7 @@
       "approvalNo": "101765",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -826,7 +826,7 @@
       "approvalNo": "058340",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -871,7 +871,7 @@
       "approvalNo": "772758",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -886,7 +886,7 @@
       "approvalNo": "774797",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -946,7 +946,7 @@
       "approvalNo": "367219",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1006,7 +1006,7 @@
       "approvalNo": "951200",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1036,7 +1036,7 @@
       "approvalNo": "638639",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1171,7 +1171,7 @@
       "approvalNo": "886763",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1186,7 +1186,7 @@
       "approvalNo": "991284",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1231,7 +1231,7 @@
       "approvalNo": "433295",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1246,7 +1246,7 @@
       "approvalNo": "236738",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1306,7 +1306,7 @@
       "approvalNo": "458801",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1426,7 +1426,7 @@
       "approvalNo": "294783",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1441,7 +1441,7 @@
       "approvalNo": "325539",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1501,7 +1501,7 @@
       "approvalNo": "341269",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1516,7 +1516,7 @@
       "approvalNo": "346256",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1546,7 +1546,7 @@
       "approvalNo": "607641",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1576,7 +1576,7 @@
       "approvalNo": "975299",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1621,7 +1621,7 @@
       "approvalNo": "642453",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1696,7 +1696,7 @@
       "approvalNo": "011965",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1711,7 +1711,7 @@
       "approvalNo": "819459",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1726,7 +1726,7 @@
       "approvalNo": "154429",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1786,7 +1786,7 @@
       "approvalNo": "688415",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1846,7 +1846,7 @@
       "approvalNo": "092493",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1906,7 +1906,7 @@
       "approvalNo": "064000",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1921,7 +1921,7 @@
       "approvalNo": "975969",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1981,7 +1981,7 @@
       "approvalNo": "523487",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -1996,7 +1996,7 @@
       "approvalNo": "767492",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2071,7 +2071,7 @@
       "approvalNo": "482974",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2191,7 +2191,7 @@
       "approvalNo": "724916",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2206,7 +2206,7 @@
       "approvalNo": "214728",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2221,7 +2221,7 @@
       "approvalNo": "057041",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2281,7 +2281,7 @@
       "approvalNo": "700533",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2296,7 +2296,7 @@
       "approvalNo": "404499",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2401,7 +2401,7 @@
       "approvalNo": "985047",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2416,7 +2416,7 @@
       "approvalNo": "363004",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2431,7 +2431,7 @@
       "approvalNo": "441708",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2521,7 +2521,7 @@
       "approvalNo": "613641",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2536,7 +2536,7 @@
       "approvalNo": "204364",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2641,7 +2641,7 @@
       "approvalNo": "120557",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2656,7 +2656,7 @@
       "approvalNo": "278360",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2671,7 +2671,7 @@
       "approvalNo": "553340",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2731,7 +2731,7 @@
       "approvalNo": "881690",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2806,7 +2806,7 @@
       "approvalNo": "249542",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2821,7 +2821,7 @@
       "approvalNo": "267474",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2881,7 +2881,7 @@
       "approvalNo": "015959",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2911,7 +2911,7 @@
       "approvalNo": "785443",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2926,7 +2926,7 @@
       "approvalNo": "020477",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2971,7 +2971,7 @@
       "approvalNo": "890098",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -2986,7 +2986,7 @@
       "approvalNo": "595098",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3001,7 +3001,7 @@
       "approvalNo": "482535",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3046,7 +3046,7 @@
       "approvalNo": "453069",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3061,7 +3061,7 @@
       "approvalNo": "422069",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3076,7 +3076,7 @@
       "approvalNo": "434564",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3091,7 +3091,7 @@
       "approvalNo": "808510",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3151,7 +3151,7 @@
       "approvalNo": "260078",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3166,7 +3166,7 @@
       "approvalNo": "706962",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3316,7 +3316,7 @@
       "approvalNo": "740680",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3406,7 +3406,7 @@
       "approvalNo": "033638",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3466,7 +3466,7 @@
       "approvalNo": "110143",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3526,7 +3526,7 @@
       "approvalNo": "435966",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3541,7 +3541,7 @@
       "approvalNo": "380985",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3601,7 +3601,7 @@
       "approvalNo": "604433",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3616,7 +3616,7 @@
       "approvalNo": "256482",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3631,7 +3631,7 @@
       "approvalNo": "445264",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3646,7 +3646,7 @@
       "approvalNo": "627978",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3676,7 +3676,7 @@
       "approvalNo": "739458",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3766,7 +3766,7 @@
       "approvalNo": "498987",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3781,7 +3781,7 @@
       "approvalNo": "067000",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3796,7 +3796,7 @@
       "approvalNo": "075000",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3811,7 +3811,7 @@
       "approvalNo": "095968",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3871,7 +3871,7 @@
       "approvalNo": "333749",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3886,7 +3886,7 @@
       "approvalNo": "282090",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3961,7 +3961,7 @@
       "approvalNo": "568079",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3976,7 +3976,7 @@
       "approvalNo": "736672",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -3991,7 +3991,7 @@
       "approvalNo": "371600",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4006,7 +4006,7 @@
       "approvalNo": "649569",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4021,7 +4021,7 @@
       "approvalNo": "521538",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4126,7 +4126,7 @@
       "approvalNo": "169186",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4141,7 +4141,7 @@
       "approvalNo": "437186",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4216,7 +4216,7 @@
       "approvalNo": "520727",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4231,7 +4231,7 @@
       "approvalNo": "121762",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4246,7 +4246,7 @@
       "approvalNo": "742634",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4276,7 +4276,7 @@
       "approvalNo": "184206",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4336,7 +4336,7 @@
       "approvalNo": "444799",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4441,7 +4441,7 @@
       "approvalNo": "828306",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4456,7 +4456,7 @@
       "approvalNo": "089316",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4591,7 +4591,7 @@
       "approvalNo": "868309",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4606,7 +4606,7 @@
       "approvalNo": "590398",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4621,7 +4621,7 @@
       "approvalNo": "543374",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4636,7 +4636,7 @@
       "approvalNo": "894420",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4696,7 +4696,7 @@
       "approvalNo": "978599",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4711,7 +4711,7 @@
       "approvalNo": "995940",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4726,7 +4726,7 @@
       "approvalNo": "639866",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4906,7 +4906,7 @@
       "approvalNo": "067927",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4921,7 +4921,7 @@
       "approvalNo": "971996",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -4936,7 +4936,7 @@
       "approvalNo": "063958",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5011,7 +5011,7 @@
       "approvalNo": "727466",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5026,7 +5026,7 @@
       "approvalNo": "704013",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5056,7 +5056,7 @@
       "approvalNo": "830759",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5071,7 +5071,7 @@
       "approvalNo": "903042",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5086,7 +5086,7 @@
       "approvalNo": "575428",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5116,7 +5116,7 @@
       "approvalNo": "050061",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5131,7 +5131,7 @@
       "approvalNo": "266060",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5161,7 +5161,7 @@
       "approvalNo": "305565",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5176,7 +5176,7 @@
       "approvalNo": "536048",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5191,7 +5191,7 @@
       "approvalNo": "632114",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5281,7 +5281,7 @@
       "approvalNo": "953687",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5296,7 +5296,7 @@
       "approvalNo": "180196",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5326,7 +5326,7 @@
       "approvalNo": "480267",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5341,7 +5341,7 @@
       "approvalNo": "140204",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5386,7 +5386,7 @@
       "approvalNo": "094785",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5476,7 +5476,7 @@
       "approvalNo": "477370",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5491,7 +5491,7 @@
       "approvalNo": "511370",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5581,7 +5581,7 @@
       "approvalNo": "754931",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5596,7 +5596,7 @@
       "approvalNo": "145379",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5626,7 +5626,7 @@
       "approvalNo": "699493",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5671,7 +5671,7 @@
       "approvalNo": "265556",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5686,7 +5686,7 @@
       "approvalNo": "282295",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5701,7 +5701,7 @@
       "approvalNo": "983020",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5731,7 +5731,7 @@
       "approvalNo": "969027",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5791,7 +5791,7 @@
       "approvalNo": "345083",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5806,7 +5806,7 @@
       "approvalNo": "602033",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5896,7 +5896,7 @@
       "approvalNo": "330575",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5911,7 +5911,7 @@
       "approvalNo": "404039",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -5971,7 +5971,7 @@
       "approvalNo": "232151",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6001,7 +6001,7 @@
       "approvalNo": "487767",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6046,7 +6046,7 @@
       "approvalNo": "671215",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6136,7 +6136,7 @@
       "approvalNo": "661285",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6151,7 +6151,7 @@
       "approvalNo": "332219",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6286,7 +6286,7 @@
       "approvalNo": "097747",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6331,7 +6331,7 @@
       "approvalNo": "406812",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6436,7 +6436,7 @@
       "approvalNo": "403437",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6481,7 +6481,7 @@
       "approvalNo": "215296",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6526,7 +6526,7 @@
       "approvalNo": "686819",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6541,7 +6541,7 @@
       "approvalNo": "471965",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6556,7 +6556,7 @@
       "approvalNo": "250829",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6631,7 +6631,7 @@
       "approvalNo": "486452",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6661,7 +6661,7 @@
       "approvalNo": "491938",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6706,7 +6706,7 @@
       "approvalNo": "749294",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6751,7 +6751,7 @@
       "approvalNo": "777720",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6811,7 +6811,7 @@
       "approvalNo": "640238",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6826,7 +6826,7 @@
       "approvalNo": "446218",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6856,7 +6856,7 @@
       "approvalNo": "710706",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6871,7 +6871,7 @@
       "approvalNo": "725776",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6901,7 +6901,7 @@
       "approvalNo": "697460",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6916,7 +6916,7 @@
       "approvalNo": "712460",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -6976,7 +6976,7 @@
       "approvalNo": "313627",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7006,7 +7006,7 @@
       "approvalNo": "019752",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7021,7 +7021,7 @@
       "approvalNo": "100773",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7036,7 +7036,7 @@
       "approvalNo": "039245",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7096,7 +7096,7 @@
       "approvalNo": "251716",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7111,7 +7111,7 @@
       "approvalNo": "776625",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7126,7 +7126,7 @@
       "approvalNo": "518301",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7141,7 +7141,7 @@
       "approvalNo": "750707",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7186,7 +7186,7 @@
       "approvalNo": "938925",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7201,7 +7201,7 @@
       "approvalNo": "256288",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7261,7 +7261,7 @@
       "approvalNo": "773350",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7276,7 +7276,7 @@
       "approvalNo": "459719",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7336,7 +7336,7 @@
       "approvalNo": "441317",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7351,7 +7351,7 @@
       "approvalNo": "146386",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7411,7 +7411,7 @@
       "approvalNo": "903494",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7426,7 +7426,7 @@
       "approvalNo": "176540",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7471,7 +7471,7 @@
       "approvalNo": "159951",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7486,7 +7486,7 @@
       "approvalNo": "380999",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7501,7 +7501,7 @@
       "approvalNo": "503989",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7561,7 +7561,7 @@
       "approvalNo": "703478",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7576,7 +7576,7 @@
       "approvalNo": "072094",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7621,7 +7621,7 @@
       "approvalNo": "756908",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7651,7 +7651,7 @@
       "approvalNo": "929571",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7681,7 +7681,7 @@
       "approvalNo": "822151",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7696,7 +7696,7 @@
       "approvalNo": "387100",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7711,7 +7711,7 @@
       "approvalNo": "920079",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7726,7 +7726,7 @@
       "approvalNo": "285684",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7741,7 +7741,7 @@
       "approvalNo": "365644",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7771,7 +7771,7 @@
       "approvalNo": "100113",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7801,7 +7801,7 @@
       "approvalNo": "603623",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7816,7 +7816,7 @@
       "approvalNo": "487396",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7846,7 +7846,7 @@
       "approvalNo": "073681",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7861,7 +7861,7 @@
       "approvalNo": "032615",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7906,7 +7906,7 @@
       "approvalNo": "789884",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7966,7 +7966,7 @@
       "approvalNo": "320178",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -7981,7 +7981,7 @@
       "approvalNo": "186349",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8011,7 +8011,7 @@
       "approvalNo": "780214",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8056,7 +8056,7 @@
       "approvalNo": "713271",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8071,7 +8071,7 @@
       "approvalNo": "227375",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8086,7 +8086,7 @@
       "approvalNo": "788884",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8101,7 +8101,7 @@
       "approvalNo": "602776",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8116,7 +8116,7 @@
       "approvalNo": "615326",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8191,7 +8191,7 @@
       "approvalNo": "847372",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8221,7 +8221,7 @@
       "approvalNo": "399922",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8236,7 +8236,7 @@
       "approvalNo": "673888",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8341,7 +8341,7 @@
       "approvalNo": "954475",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8356,7 +8356,7 @@
       "approvalNo": "145146",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8401,7 +8401,7 @@
       "approvalNo": "935183",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8416,7 +8416,7 @@
       "approvalNo": "972183",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8431,7 +8431,7 @@
       "approvalNo": "472601",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8446,7 +8446,7 @@
       "approvalNo": "039325",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8476,7 +8476,7 @@
       "approvalNo": "263892",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8491,7 +8491,7 @@
       "approvalNo": "116170",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8506,7 +8506,7 @@
       "approvalNo": "249892",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8521,7 +8521,7 @@
       "approvalNo": "307115",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8536,7 +8536,7 @@
       "approvalNo": "395675",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8551,7 +8551,7 @@
       "approvalNo": "995684",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8566,7 +8566,7 @@
       "approvalNo": "294435",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8611,7 +8611,7 @@
       "approvalNo": "236262",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8626,7 +8626,7 @@
       "approvalNo": "170201",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8656,7 +8656,7 @@
       "approvalNo": "424721",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8701,7 +8701,7 @@
       "approvalNo": "041144",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8716,7 +8716,7 @@
       "approvalNo": "674263",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8731,7 +8731,7 @@
       "approvalNo": "966291",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8746,7 +8746,7 @@
       "approvalNo": "343144",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8776,7 +8776,7 @@
       "approvalNo": "529743",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8806,7 +8806,7 @@
       "approvalNo": "264270",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8821,7 +8821,7 @@
       "approvalNo": "096101",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8836,7 +8836,7 @@
       "approvalNo": "268211",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8971,7 +8971,7 @@
       "approvalNo": "923386",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -8986,7 +8986,7 @@
       "approvalNo": "849386",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9031,7 +9031,7 @@
       "approvalNo": "289925",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9046,7 +9046,7 @@
       "approvalNo": "969412",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9076,7 +9076,7 @@
       "approvalNo": "888297",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9091,7 +9091,7 @@
       "approvalNo": "255004",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9196,7 +9196,7 @@
       "approvalNo": "570524",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9241,7 +9241,7 @@
       "approvalNo": "420565",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9271,7 +9271,7 @@
       "approvalNo": "258288",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9286,7 +9286,7 @@
       "approvalNo": "339288",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9316,7 +9316,7 @@
       "approvalNo": "276906",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9331,7 +9331,7 @@
       "approvalNo": "872046",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9346,7 +9346,7 @@
       "approvalNo": "431026",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9361,7 +9361,7 @@
       "approvalNo": "373906",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9391,7 +9391,7 @@
       "approvalNo": "576132",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9406,7 +9406,7 @@
       "approvalNo": "386132",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9436,7 +9436,7 @@
       "approvalNo": "581158",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9541,7 +9541,7 @@
       "approvalNo": "089156",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9556,7 +9556,7 @@
       "approvalNo": "898145",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9586,7 +9586,7 @@
       "approvalNo": "253403",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9601,7 +9601,7 @@
       "approvalNo": "667685",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9616,7 +9616,7 @@
       "approvalNo": "259403",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9706,7 +9706,7 @@
       "approvalNo": "989743",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9766,7 +9766,7 @@
       "approvalNo": "542826",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9871,7 +9871,7 @@
       "approvalNo": "405040",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9886,7 +9886,7 @@
       "approvalNo": "462040",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9931,7 +9931,7 @@
       "approvalNo": "471017",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9946,7 +9946,7 @@
       "approvalNo": "328017",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9961,7 +9961,7 @@
       "approvalNo": "763642",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -9991,7 +9991,7 @@
       "approvalNo": "385684",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10006,7 +10006,7 @@
       "approvalNo": "302612",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10021,7 +10021,7 @@
       "approvalNo": "372684",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10036,7 +10036,7 @@
       "approvalNo": "528614",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10066,7 +10066,7 @@
       "approvalNo": "288695",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10081,7 +10081,7 @@
       "approvalNo": "140633",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10096,7 +10096,7 @@
       "approvalNo": "378684",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10111,7 +10111,7 @@
       "approvalNo": "618612",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10156,7 +10156,7 @@
       "approvalNo": "574725",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10171,7 +10171,7 @@
       "approvalNo": "483725",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10186,7 +10186,7 @@
       "approvalNo": "328725",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10216,7 +10216,7 @@
       "approvalNo": "184313",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10231,7 +10231,7 @@
       "approvalNo": "934253",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10246,7 +10246,7 @@
       "approvalNo": "198777",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10261,7 +10261,7 @@
       "approvalNo": "007777",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10276,7 +10276,7 @@
       "approvalNo": "924569",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10336,7 +10336,7 @@
       "approvalNo": "789922",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10366,7 +10366,7 @@
       "approvalNo": "167274",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10561,7 +10561,7 @@
       "approvalNo": "649789",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10636,7 +10636,7 @@
       "approvalNo": "346330",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10651,7 +10651,7 @@
       "approvalNo": "596315",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10696,7 +10696,7 @@
       "approvalNo": "581814",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10711,7 +10711,7 @@
       "approvalNo": "963883",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10741,7 +10741,7 @@
       "approvalNo": "390318",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10756,7 +10756,7 @@
       "approvalNo": "938900",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10801,7 +10801,7 @@
       "approvalNo": "360591",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10816,7 +10816,7 @@
       "approvalNo": "148482",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10861,7 +10861,7 @@
       "approvalNo": "941008",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10876,7 +10876,7 @@
       "approvalNo": "864008",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10906,7 +10906,7 @@
       "approvalNo": "054679",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10921,7 +10921,7 @@
       "approvalNo": "730656",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10936,7 +10936,7 @@
       "approvalNo": "606656",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -10951,7 +10951,7 @@
       "approvalNo": "242502",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11011,7 +11011,7 @@
       "approvalNo": "453282",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11026,7 +11026,7 @@
       "approvalNo": "348213",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11056,7 +11056,7 @@
       "approvalNo": "089458",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11101,7 +11101,7 @@
       "approvalNo": "889035",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11161,7 +11161,7 @@
       "approvalNo": "578728",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11176,7 +11176,7 @@
       "approvalNo": "716566",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11206,7 +11206,7 @@
       "approvalNo": "283803",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11221,7 +11221,7 @@
       "approvalNo": "298450",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11236,7 +11236,7 @@
       "approvalNo": "440378",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11251,7 +11251,7 @@
       "approvalNo": "285395",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11281,7 +11281,7 @@
       "approvalNo": "358948",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11296,7 +11296,7 @@
       "approvalNo": "046422",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0430-0729debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11326,7 +11326,7 @@
       "approvalNo": "311436",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11341,7 +11341,7 @@
       "approvalNo": "763467",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11386,7 +11386,7 @@
       "approvalNo": "674100",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11401,7 +11401,7 @@
       "approvalNo": "823099",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11431,7 +11431,7 @@
       "approvalNo": "577490",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11461,7 +11461,7 @@
       "approvalNo": "243166",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11476,7 +11476,7 @@
       "approvalNo": "230166",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11506,7 +11506,7 @@
       "approvalNo": "883658",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11521,7 +11521,7 @@
       "approvalNo": "238390",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     },
     {
@@ -11536,7 +11536,7 @@
       "approvalNo": "225390",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0508-0806RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "事業経費",
       "memo": ""
     }
   ]
