@@ -197,9 +197,10 @@ tr.bulk-selected td { background: #e8f0fe !important; }
   <div class="toolbar">
     <input type="text" id="searchText" placeholder="🔍 店舗名・メモで検索..." oninput="applyFilters()">
     <input type="text" id="searchApproval" placeholder="承認番号（例: A0067653）" oninput="applyFilters()" style="width:160px">
-    <input type="date" id="dateFrom" onchange="applyFilters()" title="開始日">
+    <input type="month" id="monthFilter" onchange="applyMonthFilter()" title="年月で絞り込み">
+    <input type="date" id="dateFrom" onchange="document.getElementById('monthFilter').value='';applyFilters()" title="開始日">
     <span style="color:#bbb">〜</span>
-    <input type="date" id="dateTo" onchange="applyFilters()" title="終了日">
+    <input type="date" id="dateTo" onchange="document.getElementById('monthFilter').value='';applyFilters()" title="終了日">
     <select id="filterCat" onchange="applyFilters()">
       <option value="">すべてのカテゴリ</option>
       <option value="_none">未分類のみ</option>
@@ -1365,9 +1366,27 @@ function clearSelection() {
 
 function clearFilters() {
   ['searchText','searchApproval'].forEach(id => document.getElementById(id).value = '');
-  ['dateFrom','dateTo'].forEach(id => document.getElementById(id).value = '');
+  ['dateFrom','dateTo','monthFilter'].forEach(id => document.getElementById(id).value = '');
   ['filterCat','filterSource','filterRegion'].forEach(id => document.getElementById(id).value = '');
   clearSelection();
+  applyFilters();
+}
+
+// 年月選択（例: 2026-07）→ その月の開始日・終了日を日付範囲欄に反映して絞り込む
+// 空にすると全期間表示に戻る
+function applyMonthFilter() {
+  const v = document.getElementById('monthFilter').value; // "YYYY-MM" or ""
+  if (!v) {
+    document.getElementById('dateFrom').value = '';
+    document.getElementById('dateTo').value   = '';
+    applyFilters();
+    return;
+  }
+  const [y, m] = v.split('-').map(Number);
+  const lastDay = new Date(y, m, 0).getDate(); // m は1始まりなので0日目=前月末日ロジックでその月の末日になる
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('dateFrom').value = `${y}-${pad(m)}-01`;
+  document.getElementById('dateTo').value   = `${y}-${pad(m)}-${pad(lastDay)}`;
   applyFilters();
 }
 
