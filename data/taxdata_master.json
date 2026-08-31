@@ -1,8 +1,8 @@
 {
   "version": 1,
   "tool": "税務データ検索ツール",
-  "exportedAt": "2026-08-31T08:59:34.942Z",
-  "count": 844,
+  "exportedAt": "2026-08-31T12:12:50.157Z",
+  "count": 855,
   "records": [
     {
       "id": "RB_74980006004-230301228644",
@@ -6511,8 +6511,8 @@
       "approvalNo": "049429",
       "source": "楽天銀行（デビット）",
       "sourceFile": "楽天銀行/0101-0722debitmeisai.csv",
-      "cat": "",
-      "memo": ""
+      "cat": "事業経費",
+      "memo": "じゅっちゃんの舞台オンラインチケット"
     },
     {
       "id": "RB_74966006114-904205364060",
@@ -11585,6 +11585,51 @@
       "memo": ""
     },
     {
+      "id": "RB_STMT_20260803_130054",
+      "date": "20260803",
+      "merchant": "PE　ＤＦａｃネット振込み",
+      "amount": 2000,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260803_300054",
+      "date": "20260803",
+      "merchant": "フジイ　シユン",
+      "amount": 170000,
+      "direction": "入金",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260803_265054",
+      "date": "20260803",
+      "merchant": "ＧＭＯあおぞらネット銀行　ゆうやけ支店　普通預金　4020327　シホウ）ヤマトニンイ（依頼人名：フシ゛イ　シユン　振込予定日：2026年08月03日　管理番号：20260803-29857666）",
+      "amount": 35000,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
       "id": "RB_74966006218-908074996014",
       "date": "20260804",
       "merchant": "ﾎﾟｺﾁﾔ",
@@ -11791,7 +11836,7 @@
       "approvalNo": "800187",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "通信費",
       "memo": ""
     },
     {
@@ -11807,6 +11852,21 @@
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
       "cat": "事業経費",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260810_317239",
+      "date": "20260810",
+      "merchant": "カ）カラ－ズ",
+      "amount": 67216,
+      "direction": "入金",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
       "memo": ""
     },
     {
@@ -11836,7 +11896,7 @@
       "approvalNo": "177111",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "通信費",
       "memo": ""
     },
     {
@@ -11911,7 +11971,22 @@
       "approvalNo": "392736",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
-      "cat": "",
+      "cat": "通信費",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260812_314878",
+      "date": "20260812",
+      "merchant": "カ－ド出金　セブン銀行003401001138724",
+      "amount": 1000,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "コンビニ",
       "memo": ""
     },
     {
@@ -11942,6 +12017,36 @@
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
       "cat": "コンビニ",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260814_453238",
+      "date": "20260814",
+      "merchant": "年金　コウセイロウドウシヨウネンキンキヨク　６５２６０８１４００５１３９６３５　　　２０２６０８１４",
+      "amount": 141216,
+      "direction": "入金",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260814_464478",
+      "date": "20260814",
+      "merchant": "ネンキンセイカツシヤシエンキユウフキン",
+      "amount": 11240,
+      "direction": "入金",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
       "memo": ""
     },
     {
@@ -12152,6 +12257,21 @@
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
       "cat": "事業経費",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260817_283819",
+      "date": "20260817",
+      "merchant": "ＧＭＯあおぞらネット銀行　ゆうやけ支店　普通預金　4020327　シホウ）ヤマトニンイ（依頼人名：フシ゛イ　シユン　振込予定日：2026年08月17日　管理番号：20260817-31065511）",
+      "amount": 176149,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
       "memo": ""
     },
     {
@@ -12376,6 +12496,21 @@
       "approvalNo": "150312",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260821_267882",
+      "date": "20260821",
+      "merchant": "PE　ＤＦａｃネット振込み",
+      "amount": 4073,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
       "cat": "",
       "memo": ""
     },
@@ -12661,6 +12796,36 @@
       "approvalNo": "770033",
       "source": "楽天銀行（デビット）",
       "sourceFile": "0602-0831RB-debitmeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260827_255594",
+      "date": "20260827",
+      "merchant": "カ－ド出金　セブン銀行003401001141580",
+      "amount": 5000,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "コンビニ",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260827_255374",
+      "date": "20260827",
+      "merchant": "カ－ド手数料（内消費税 ￥20）",
+      "amount": 220,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0602-0830RB-torihikimeisai.csv",
       "cat": "",
       "memo": ""
     }
