@@ -1,8 +1,8 @@
 {
   "version": 1,
   "tool": "税務データ検索ツール",
-  "exportedAt": "2026-08-31T12:12:58.677Z",
-  "count": 855,
+  "exportedAt": "2026-09-13T14:21:56.790Z",
+  "count": 859,
   "records": [
     {
       "id": "RB_74980006004-230301228644",
@@ -12826,6 +12826,66 @@
       "region": "国内",
       "source": "楽天銀行（口座明細）",
       "sourceFile": "0602-0830RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260907_233886",
+      "date": "20260907",
+      "merchant": "PE　ＤＦａｃネット振込み",
+      "amount": 2000,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0901-0912RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260908_232370",
+      "date": "20260908",
+      "merchant": "あおぞら銀行　ＢＡＮＫコバルト支店　普通預金　9151602　フシ゛イ　シユン（依頼人名：フシ゛イ　シユン　振込予定日：2026年09月08日　管理番号：20260908-33043778）",
+      "amount": 100,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0901-0912RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260910_290962",
+      "date": "20260910",
+      "merchant": "カ）カラ－ズ",
+      "amount": 72778,
+      "direction": "入金",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0901-0912RB-torihikimeisai.csv",
+      "cat": "",
+      "memo": ""
+    },
+    {
+      "id": "RB_STMT_20260911_286741",
+      "date": "20260911",
+      "merchant": "ドコモＳＭＴＢネット銀行　第一生命支店　普通預金　2557706　フシ゛イ　シユン（依頼人名：フシ゛イ　シユン　振込予定日：2026年09月11日　管理番号：20260911-33328791）",
+      "amount": 3000,
+      "direction": "支出",
+      "localAmt": "",
+      "currency": "",
+      "rate": "",
+      "region": "国内",
+      "source": "楽天銀行（口座明細）",
+      "sourceFile": "0901-0912RB-torihikimeisai.csv",
       "cat": "",
       "memo": ""
     }
